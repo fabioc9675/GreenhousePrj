@@ -1,4 +1,4 @@
 # FIRMWARE
 
-folder that contains the information related with firmware develop
+Folder that contains the information related with firmware develop
 

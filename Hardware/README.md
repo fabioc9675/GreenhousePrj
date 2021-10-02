@@ -1,4 +1,4 @@
 # HARDWARE
 
-folder that contains the information related with hardware develop
+Folder that contains the information related with hardware develop
 
