@@ -41,6 +41,10 @@ It is necessary to add JSON Web Token to guarant that the res api is just access
 - `sudo systemctl start mongodb`
 - `mongod` these commands initiate the daemon to execute mongodb
 
+### Mongosse types
+
+Visit the URL: `https://mongoosejs.com/docs/schematypes.html`
+
 ## Available Scripts
 
 In the project directory, you can run:
