@@ -57,7 +57,7 @@ router.get("/inst/:inst/date/:start/:end", async (req, res) => {
   const end = new Date(req.params.end);
   const greenhouse = await Greenhouse.find({
     institution: institute,
-    createAt: {
+    createdAt: {
       $gte: start,
       $lt: end,
     },
@@ -78,7 +78,7 @@ router.get("/inst/:inst/numH/:numH/date/:start/:end", async (req, res) => {
   const greenhouse = await Greenhouse.find({
     institution: institute,
     numHouse: numHouse,
-    createAt: {
+    createdAt: {
       $gte: start,
       $lt: end,
     },
