@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
+// import data of configuration
+import dataConfig from "../../dataConfig/dataConfig.json";
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      institution: dataConfig.institution, // load institute environment variable
       greenhouses: [],
     };
 
@@ -18,7 +22,7 @@ class App extends Component {
 
   // function to make a query to DataBase
   fetchTask() {
-    fetch("/api/greenhouse")
+    fetch(`/api/greenhouse/inst/${this.state.institution}`)
       .then((res) =>
         res.json().then((data) => {
           this.setState({ greenhouses: data });
@@ -35,7 +39,7 @@ class App extends Component {
         <nav className="light-blue darken-4">
           <div className="container">
             <a className="brand-logo" href="/">
-              Proyecto Invernadero
+              Proyecto Invernadero, Institución {this.state.institution}
             </a>
           </div>
         </nav>
