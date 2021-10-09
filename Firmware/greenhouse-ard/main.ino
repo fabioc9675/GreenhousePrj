@@ -35,6 +35,7 @@
 // @return: void
 void setup()
 {
+    Serial.begin(115200);
 }
 
 // loop function
@@ -42,4 +43,6 @@ void setup()
 // @return: void
 void loop()
 {
+    Serial.println(rand());
+    delay(1000);
 }
