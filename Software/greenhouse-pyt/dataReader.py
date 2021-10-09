@@ -12,6 +12,8 @@ def main():
         while(1):
             data = dev.read_until()
 
+            # dev.write(data.encode('ascii))
+
             print(data)
 
     except error:
