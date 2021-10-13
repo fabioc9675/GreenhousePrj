@@ -14,7 +14,7 @@ def main():
         dev.flushInput()
         dev.flushOutput()
 
-        time.sleep(2)
+        time.sleep(4)
 
         while(1):
             # data = 'r'
