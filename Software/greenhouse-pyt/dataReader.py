@@ -22,8 +22,12 @@ def main():
             dev.flushInput()
             # dev.write(data.encode('ascii'))
             data = dev.readline()  # read_until('\r')
+            # decode data into string
+            decodeData = data[0:len(data)-2].decode("utf-8")
+            # Split data in a list
+            dataList = decodeData.split(';')
             # dev.write(data.encode('ascii))
-            print(data[0:len(data)-2].decode("utf-8"))
+            print(dataList)
             time.sleep(5)
 
     except error:
