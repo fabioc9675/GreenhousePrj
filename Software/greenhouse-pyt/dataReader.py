@@ -23,7 +23,7 @@ def main():
             # dev.write(data.encode('ascii'))
             data = dev.readline()  # read_until('\r')
             # dev.write(data.encode('ascii))
-            print(data)
+            print(data[0:len(data)-2].decode("utf-8"))
             time.sleep(5)
 
     except error:

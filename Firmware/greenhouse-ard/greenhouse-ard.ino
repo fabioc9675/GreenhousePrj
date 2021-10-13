@@ -116,7 +116,7 @@ void serialEvent(void)
 
             RaspberryChain = institution + ';' + numHouse + ';' +
                              temp_env + ';' + mois_env + ';' + radi_env + ';' +
-                             temp_earth + ';' + humi_earth + ";\r\n";
+                             temp_earth + ';' + humi_earth + "\r\n";
 
             Serial.print(RaspberryChain);
 
