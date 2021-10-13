@@ -46,6 +46,23 @@ It is necessary to add JSON Web Token to guarant that the res api is just access
 
 Visit the URL: `https://mongoosejs.com/docs/schematypes.html`
 
+### MongoDB installation in Raspberry Pi
+
+Follow the indications provided in the link: `https://www.mongodb.com/developer/how-to/mongodb-on-raspberry-pi/`
+
+If you have problems with initialization of the DB into raspberry follow the URL: `https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0-0-1-27017/705/3`
+
+Create a data/db in your home directory
+
+1. cd /Users
+2. cd to your home directory
+3. mkdir data
+4. cd data
+5. mkdir db
+6. mongod --dbpath ~/data/db press enter then just keep it running.
+
+==========================================================
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -6,7 +6,7 @@ from pymongo import MongoClient  # Allows to connect with MongoDB
 
 load_dotenv()
 
-MONGO_URI = os.getenv('REACT_APP_URI')  # load mongodb URI
+MONGO_URI = os.getenv('REACT_APP_URI_UDEA')  # load mongodb URI
 MONGO_DB = os.getenv('MONGODB_NAME')    # database name
 MONGO_COL = os.getenv('MONGODB_COLLECTION')    # database name
 
