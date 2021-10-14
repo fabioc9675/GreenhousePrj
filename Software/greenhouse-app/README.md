@@ -28,6 +28,8 @@ routes: contains routing between code
 - `npm install react bootstrap`
 - `npm install react dotenv`
 - `npm install concurrently` run concurrently server and frontend
+- `npm install recharts` library to use charts and plots https://github.com/recharts/recharts
+- `npm install react-plotly.js plotly.js` library to use plots https://plotly.com/javascript/react/
 
 Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part into index.html, alse add the icons provided for materialize
 

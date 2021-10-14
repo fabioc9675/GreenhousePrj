@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
@@ -18,6 +26,14 @@ class App extends Component {
   componentDidMount() {
     // console.log("Component was mounted");
     this.fetchTask();
+    this.timer = setInterval(() => {
+      console.log("launch interval");
+      this.fetchTask();
+    }, 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   // function to make a query to DataBase
@@ -26,7 +42,7 @@ class App extends Component {
       .then((res) =>
         res.json().then((data) => {
           this.setState({ greenhouses: data });
-          // console.log(this.state.greenhouses);
+          console.log(this.state.greenhouses);
         })
       )
       .catch((err) => console.error(err));
@@ -43,6 +59,31 @@ class App extends Component {
             </a>
           </div>
         </nav>
+
+        <div className="container">
+          <LineChart
+            width={400}
+            height={400}
+            data={this.state.greenhouses}
+            margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+          >
+            <XAxis dataKey="createdAt" />
+            <Tooltip />
+            <CartesianGrid stroke="#f5f5f5" />
+            <Line
+              type="monotone"
+              dataKey="temp_env"
+              stroke="#ff7300"
+              yAxisId={0}
+            />
+            <Line
+              type="monotone"
+              dataKey="temp_earth[1]"
+              stroke="#387908"
+              yAxisId={1}
+            />
+          </LineChart>
+        </div>
 
         <div className="container">
           <table>
