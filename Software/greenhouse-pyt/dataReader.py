@@ -55,8 +55,8 @@ def main():
             temp_env = float(dataList[2])
             mois_env = float(dataList[3])
             radi_env = float(dataList[4])
-            temp_earth = [float(item) for item in dataList[5][1:-2].split(',')]
-            humi_earth = [float(item) for item in dataList[6][1:-2].split(',')]
+            temp_earth = [float(item) for item in dataList[5][1:-1].split(',')]
+            humi_earth = [float(item) for item in dataList[6][1:-1].split(',')]
 
             mongoObj = {
                 "institution": institution,
