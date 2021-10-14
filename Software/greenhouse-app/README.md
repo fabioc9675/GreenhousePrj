@@ -28,6 +28,8 @@ routes: contains routing between code
 - `npm install react bootstrap`
 - `npm install react dotenv`
 - `npm install concurrently` run concurrently server and frontend
+- `npm install socket.io`
+- `npm install socket.io-client` Packages to add socket io functionallity
 
 Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part into index.html, alse add the icons provided for materialize
 
