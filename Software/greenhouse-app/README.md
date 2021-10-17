@@ -30,10 +30,15 @@ routes: contains routing between code
 - `npm install concurrently` run concurrently server and frontend
 - `npm install recharts` library to use charts and plots https://github.com/recharts/recharts
 - `npm install react-plotly.js plotly.js` library to use plots https://plotly.com/javascript/react/
+- `npm install socket.io`
+- `npm install socket.io-client` Packages to add socket io functionallity
+- `npm install http-proxy-middleware --save` to use proxy in the server
 
 Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part into index.html, alse add the icons provided for materialize
 
 It is necessary to add JSON Web Token to guarant that the res api is just accessed by the app, and the use of login
+
+Example with socketio `https://github.com/JackZheng10/Thought-Wall.git`
 
 ## Local Database
 

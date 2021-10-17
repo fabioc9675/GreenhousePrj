@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { io } from "socket.io-client";
 import {
   CartesianGrid,
   Line,
@@ -25,14 +26,26 @@ class App extends Component {
   // Component mounted ready
   componentDidMount() {
     // console.log("Component was mounted");
+    const socket = io("/");
+
+    // initialization of socket io in the client side
+    socket.on("message", (message) => {
+      console.log(message);
+      this.fetchTask();
+    });
+
+    // load data
     this.fetchTask();
+
+    // set time interval for someting usefull
     this.timer = setInterval(() => {
       console.log("launch interval");
-      this.fetchTask();
-    }, 10000);
+      // this.fetchTask();
+    }, 10000); 
   }
 
   componentWillUnmount() {
+    // clear time interval
     clearInterval(this.timer);
   }
 
@@ -62,7 +75,7 @@ class App extends Component {
 
         <div className="container">
           <LineChart
-            width={400}
+            width={800}
             height={400}
             data={this.state.greenhouses}
             margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
