@@ -161,8 +161,6 @@ void serialEvent(void)
 //With the settings above, this IRS will trigger each 100ms.
 ISR(TIMER1_COMPA_vect)
 {
-    TCNT1 = 0; //First, set the timer back to 0 so it resets for next interrupt
-
     contSample++;
     contLed++;
 

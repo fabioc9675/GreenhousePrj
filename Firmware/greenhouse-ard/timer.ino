@@ -34,20 +34,22 @@
 void init_Timer(void)
 {
 
-    /* Example code with timer intyerrutp that will create an interruption each 
- *  500ms using timer1 and prescalar of 256.
-Calculations (for 500ms): 
-  System clock 16 Mhz and Prescalar 256;
-  Timer 1 speed = 16Mhz/256 = 62.5 Khz    
-  Pulse time = 1/62.5 Khz =  16us  
-  Count up to = 500ms / 16us = 31250 (so this is the value the OCR register should have)*/
+/* Example code with timer interrupt that will create an interruption each
+ *  1 s using timer1 and prescalar of 1024.
+Calculations (for 500ms):
+    System clock 16 Mhz and Prescalar 1024;
+    Timer 1 speed = 16Mhz/1024 = 15625 hz
+    Pulse time = 1/15625 hz =  64us
+    Count up to = 1s / 64us = 15625 (so this is the value the OCR register should have)*/
 
     cli(); //stop interrupts for till we make the settings
-    //Timer 1 (interrupt each 100ms)
+    
+    TCNT1  = 0;          // Initialize counter value to 0
     TCCR1A = 0;          // Reset entire TCCR1A to 0
     TCCR1B = 0;          // Reset entire TCCR1B to 0
-    TCCR1B |= B00000100; //Set CS12 to 1 so we get prescalar 256
-    TIMSK1 |= B00000010; //Set OCIE1A to 1 so we enable compare match A
-    OCR1A = 6250;        //Finally we set compare register A to this value
+    TCCR1B |= (1 << WGM12); //set the timer 1 for (CTC) mode.
+    TCCR1B |= (1 << CS12) | (1 << CS10);  //Set CS10 and CS12 bits, so we get prescalar 1024
+    TIMSK1 |= (1 << OCIE1A); //Set OCIE1A to 1 so we enable compare match A
+    OCR1A = 15625;        //Finally we set compare register A to this value
     sei();               //Enable back the interrupts
 }
