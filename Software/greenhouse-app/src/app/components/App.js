@@ -18,7 +18,7 @@ class App extends Component {
   // Component mounted ready
   componentDidMount() {
     // console.log("Component was mounted");
-    const socket = io("http://localhost:3000");
+    const socket = io("/");
 
     socket.on("message", (message) => {
       console.log(message);

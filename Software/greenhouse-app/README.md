@@ -30,6 +30,7 @@ routes: contains routing between code
 - `npm install concurrently` run concurrently server and frontend
 - `npm install socket.io`
 - `npm install socket.io-client` Packages to add socket io functionallity
+- `npm install http-proxy-middleware --save` to use proxy in the server
 
 Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part into index.html, alse add the icons provided for materialize
 
