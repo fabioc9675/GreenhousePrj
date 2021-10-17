@@ -41,7 +41,7 @@ class App extends Component {
     this.timer = setInterval(() => {
       console.log("launch interval");
       // this.fetchTask();
-    }, 10000); 
+    }, 10000);
   }
 
   componentWillUnmount() {
