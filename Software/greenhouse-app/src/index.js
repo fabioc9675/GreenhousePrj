@@ -12,8 +12,9 @@ require("dotenv").config();
 // URI connection
 const URI = process.env.REACT_APP_URI; // environment variable
 const port = process.env.PORT || 3000;
-
 const connection = mongoose.connection;
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 
 // Settings
 app.set("port", port); // takes the port provided for the server or other
@@ -30,9 +31,7 @@ app.use("/api/greenhouse", require("./routes/greenhouse.routes")); // adding pre
 // console.log(path.join(__dirname, "public"));
 app.use(express.static(path.join(__dirname, "public"))); // adding prefix to the route
 
-const server = require("http").createServer(app);
-const io = require("socket.io")(server);
-
+// connect to the database
 mongoose
   .connect(URI) // create connection to mongodb database
   .then((db) => console.log("Database is connected"))
@@ -40,7 +39,7 @@ mongoose
 
 // socket initialization
 io.on("connection", (socket) => {
-  console.log("socket.io: User connecter: ", socket.id);
+  console.log("socket.io: User connected: ", socket.id);
 
   socket.on("disconnect", () => {
     console.log("socket.io: User disconnected: ", socket.id);
@@ -57,7 +56,7 @@ connection.once("open", () => {
   console.log("MongoDB database connected");
 
   // Setting change streams in the database
-  console.log("Setting change streams");
+  console.log("Setting change streaming");
   const greenhouseChangeStream = connection.collection("greenhouses").watch();
 
   greenhouseChangeStream.on("change", (change) => {
