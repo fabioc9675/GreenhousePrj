@@ -36,6 +36,8 @@ Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part int
 
 It is necessary to add JSON Web Token to guarant that the res api is just accessed by the app, and the use of login
 
+Example with socketio `https://github.com/JackZheng10/Thought-Wall.git`
+
 ## Local Database
 
 ### Initialization
