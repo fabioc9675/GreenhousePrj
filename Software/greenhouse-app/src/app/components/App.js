@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { io } from "socket.io-client";
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
@@ -17,6 +18,12 @@ class App extends Component {
   // Component mounted ready
   componentDidMount() {
     // console.log("Component was mounted");
+    const socket = io("http://localhost:3000");
+
+    socket.on("message", (message) => {
+      console.log(message);
+      this.fetchTask();
+    });
     this.fetchTask();
   }
 
