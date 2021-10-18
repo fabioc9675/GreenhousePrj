@@ -38,15 +38,15 @@ class App extends Component {
     this.fetchTask();
 
     // set time interval for someting usefull
-    this.timer = setInterval(() => {
-      console.log("launch interval");
-      // this.fetchTask();
-    }, 10000);
+    // this.timer = setInterval(() => {
+    //   console.log("launch interval");
+    //   // this.fetchTask();
+    // }, 10000);
   }
 
   componentWillUnmount() {
     // clear time interval
-    clearInterval(this.timer);
+    // clearInterval(this.timer);
   }
 
   // function to make a query to DataBase
