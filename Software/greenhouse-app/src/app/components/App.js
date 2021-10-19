@@ -11,16 +11,30 @@ import {
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
+import { DatePicker } from "react-materialize";
+import moment from "moment";
 
 class App extends Component {
   constructor() {
+    // set the current date
+    var date = new Date();
+    const dateInit = moment(date).format("YYYY-MM-D");
+    // const myDate = moment(date).format("MMM D, YYYY");
+    date.setDate(date.getDate() + 1);
+    const dateEnd = moment(date).format("YYYY-MM-D");
+
     super();
     this.state = {
       institution: dataConfig.institution, // load institute environment variable
       greenhouses: [],
+      dateInit: dateInit,
+      dateEnd: dateEnd,
+      dateComp: {},
+      // myDate: myDate,
     };
 
     // Associate events with the component
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // Component mounted ready
@@ -31,11 +45,11 @@ class App extends Component {
     // initialization of socket io in the client side
     socket.on("message", (message) => {
       console.log(message);
-      this.fetchTask();
+      this.fetchGreenhouse();
     });
 
     // load data
-    this.fetchTask();
+    this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd);
 
     // set time interval for someting usefull
     // this.timer = setInterval(() => {
@@ -50,7 +64,7 @@ class App extends Component {
   }
 
   // function to make a query to DataBase
-  fetchTask() {
+  fetchGreenhouse() {
     fetch(`/api/greenhouse/inst/${this.state.institution}`)
       .then((res) =>
         res.json().then((data) => {
@@ -59,6 +73,50 @@ class App extends Component {
         })
       )
       .catch((err) => console.error(err));
+  }
+
+  // function to make a query to DataBase
+  fetchGreenhousebyDate(di, de) {
+    fetch(`/api/greenhouse/inst/${this.state.institution}/date/${di}/${de}`)
+      .then((res) =>
+        res.json().then((data) => {
+          this.setState({ greenhouses: data });
+          console.log(this.state.greenhouses);
+        })
+      )
+      .catch((err) => console.error(err));
+  }
+
+  // function to handle change
+  handleChange(e) {
+    // this.fetchTaskbyDate();
+    const dateInit = moment(e.target.value).format("YYYY-MM-D");
+    var date = new Date(dateInit);
+    date.setUTCDate(date.getUTCDate() + 1);
+    const dateEnd = moment(date).utc().format("YYYY-MM-D");
+    // const myDate = moment(e.target.value).format("MMM D, YYYY");
+  }
+
+  // requesting data when button is pressed
+  requesDataByDate() {
+    var datePicker = document.getElementById("dateSelector");
+    var date = new Date(datePicker.value);
+
+    const dateInit = moment(date).format("YYYY-MM-D");
+    const myDate = moment(date).format("MMM D, YYYY");
+
+    date.setUTCDate(date.getUTCDate() + 1);
+
+    const dateEnd = moment(date).utc().format("YYYY-MM-D");
+
+    console.log("Data request");
+    this.setState({
+      dateInit: dateInit,
+      dateEnd: dateEnd,
+      // myDate: myDate,
+    });
+
+    this.fetchGreenhousebyDate(dateInit, dateEnd);
   }
 
   render() {
@@ -72,6 +130,31 @@ class App extends Component {
             </a>
           </div>
         </nav>
+
+        <div className="container">
+          <DatePicker
+            label="Fecha de observación"
+            id="dateSelector"
+            onChange={(newDate) => {
+              this.handleChange({
+                target: {
+                  id: "myDate",
+                  value: newDate,
+                },
+              });
+            }}
+            options={{
+              setDefaultDate: true,
+              defaultDate: this.state.myDate,
+            }}
+          />
+          <button
+            className="waves-effect waves-light btn-large"
+            onClick={() => this.requesDataByDate()}
+          >
+            <i className="material-icons left">search</i>Consultar fecha
+          </button>
+        </div>
 
         <div className="container">
           <LineChart
