@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { io } from "socket.io-client";
 import {
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   Tooltip,
@@ -11,8 +12,14 @@ import {
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
-import { DatePicker } from "react-materialize";
+import {
+  Collapsible,
+  CollapsibleItem,
+  DatePicker,
+  Icon,
+} from "react-materialize";
 import moment from "moment";
+import DataChart from "./DataChart";
 
 class App extends Component {
   constructor() {
@@ -30,6 +37,7 @@ class App extends Component {
       dateInit: dateInit,
       dateEnd: dateEnd,
       dateComp: {},
+      lastGreenhouse: {},
       // myDate: myDate,
     };
 
@@ -45,11 +53,15 @@ class App extends Component {
     // initialization of socket io in the client side
     socket.on("message", (message) => {
       console.log(message);
-      this.fetchGreenhouse();
+      // this.fetchGreenhouse();
+      this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd);
+      this.fetchLastGreenhouse();
+      M.toast({ html: "Nuevo dato " });
     });
 
     // load data
     this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd);
+    this.fetchLastGreenhouse();
 
     // set time interval for someting usefull
     // this.timer = setInterval(() => {
@@ -68,6 +80,11 @@ class App extends Component {
     fetch(`/api/greenhouse/inst/${this.state.institution}`)
       .then((res) =>
         res.json().then((data) => {
+          for (var i = 0; i < data.length; i++) {
+            var createAt = new Date(data[i].createdAt);
+            data[i].date = moment(createAt).format("YYYY-MM-D");
+            data[i].hour = moment(createAt).format("hh:mm:ss");
+          }
           this.setState({ greenhouses: data });
           console.log(this.state.greenhouses);
         })
@@ -80,8 +97,28 @@ class App extends Component {
     fetch(`/api/greenhouse/inst/${this.state.institution}/date/${di}/${de}`)
       .then((res) =>
         res.json().then((data) => {
+          for (var i = 0; i < data.length; i++) {
+            var createAt = new Date(data[i].createdAt);
+            data[i].date = moment(createAt).format("YYYY-MM-D");
+            data[i].hour = moment(createAt).format("hh:mm:ss");
+          }
           this.setState({ greenhouses: data });
           console.log(this.state.greenhouses);
+        })
+      )
+      .catch((err) => console.error(err));
+  }
+
+  // function to fetch last greenhouse
+  fetchLastGreenhouse() {
+    fetch(`/api/greenhouse/last/inst/${this.state.institution}`)
+      .then((res) =>
+        res.json().then((data) => {
+          var createAt = new Date(data[0].createdAt);
+          data[0].date = moment(createAt).format("YYYY-MM-D");
+          data[0].hour = moment(createAt).format("hh:mm:ss");
+          this.setState({ lastGreenhouse: data[0] });
+          console.log(this.state.lastGreenhouse);
         })
       )
       .catch((err) => console.error(err));
@@ -103,7 +140,7 @@ class App extends Component {
     var date = new Date(datePicker.value);
 
     const dateInit = moment(date).format("YYYY-MM-D");
-    const myDate = moment(date).format("MMM D, YYYY");
+    // const myDate = moment(date).format("MMM D, YYYY");
 
     date.setUTCDate(date.getUTCDate() + 1);
 
@@ -143,10 +180,6 @@ class App extends Component {
                 },
               });
             }}
-            options={{
-              setDefaultDate: true,
-              defaultDate: this.state.myDate,
-            }}
           />
           <button
             className="waves-effect waves-light btn-large"
@@ -157,28 +190,42 @@ class App extends Component {
         </div>
 
         <div className="container">
-          <LineChart
-            width={800}
-            height={400}
-            data={this.state.greenhouses}
-            margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-          >
-            <XAxis dataKey="createdAt" />
-            <Tooltip />
-            <CartesianGrid stroke="#f5f5f5" />
-            <Line
-              type="monotone"
-              dataKey="temp_env"
-              stroke="#ff7300"
-              yAxisId={0}
-            />
-            <Line
-              type="monotone"
-              dataKey="temp_earth[1]"
-              stroke="#387908"
-              yAxisId={1}
-            />
-          </LineChart>
+          <Collapsible accordion={false} popout>
+            <CollapsibleItem
+              expanded={false}
+              header={`Temperatura ambiente = ${this.state.lastGreenhouse.temp_env} ºC`}
+              icon={<Icon>filter_drama</Icon>}
+              node="div"
+              style={{ justifyItems: "center" }}
+            >
+              <DataChart
+                data={this.state.greenhouses}
+                xDataKey="hour"
+                yDataKey="temp_env"
+              />
+            </CollapsibleItem>
+            <CollapsibleItem
+              expanded={false}
+              header={`Humedad relativa ambiente = ${this.state.lastGreenhouse.mois_env} %`}
+              icon={<Icon>place</Icon>}
+              node="div"
+            >
+              <DataChart
+                data={this.state.greenhouses}
+                xDataKey="hour"
+                yDataKey="mois_env"
+              />
+            </CollapsibleItem>
+            <CollapsibleItem
+              expanded={false}
+              header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
+              icon={<Icon>whatshot</Icon>}
+              node="div"
+            >
+              You know, FYI, you can buy a paddle. Did you not plan for this
+              contingency?
+            </CollapsibleItem>
+          </Collapsible>
         </div>
 
         <div className="container">

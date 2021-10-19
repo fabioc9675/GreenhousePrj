@@ -19,6 +19,21 @@ router.get("/id/:id", async (req, res) => {
   res.json(greenhouse);
 });
 
+// reading last data by institution
+router.get("/last/inst/:inst", async (req, res) => {
+  // make a request to the database
+  // Examples
+  // http://localhost:3000/api/greenhouse/inst/UdeA
+  const institute = req.params.inst;
+  const greenhouse = await Greenhouse.find({
+    institution: institute,
+  })
+    .limit(1)
+    .sort({ $natural: -1 });
+  // when client ask for '/' server response
+  res.json(greenhouse);
+});
+
 // reading data by institution
 router.get("/inst/:inst", async (req, res) => {
   // make a request to the database
