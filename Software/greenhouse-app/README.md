@@ -71,6 +71,95 @@ Create a data/db in your home directory
 5. mkdir db
 6. mongod --dbpath ~/data/db press enter then just keep it running.
 
+### MongoDB Replica set configuration
+
+Follow the indications on this URL: https://gist.github.com/davisford/bb37079900888c44d2bbcb2c52a5d6e8
+
+- Add the `replication` section to the mongod.conf file:
+
+```
+$cat /usr/local/etc/mongod.conf
+systemLog:
+  destination: file
+  path: /usr/local/var/log/mongodb/mongo.log
+  logAppend: true
+storage:
+  engine: mmapv1
+  dbPath: /usr/local/var/repl-emagine-data
+net:
+  bindIp: 127.0.0.1
+replication:
+  replSetName: replocal
+```
+
+- Restart mongod (I use brew):
+
+```sh
+$ brew services restart mongodb
+```
+
+- Connect with local mongo shell and initiate the replica set:
+
+This step is necessary to deploy the database in mongodb
+
+```
+$mongo
+MongoDB shell version: 3.2.9
+connecting to: test
+> rs.initiate({_id: "replocal", members: [{_id: 0, host: "127.0.0.1:27017"}] })
+{ "ok" : 1 }
+```
+
+- Now you'll be secondary, but then it will promote you to primary since you're the only one:
+
+```
+replocal:SECONDARY> rs.status
+function () {
+    return db._adminCommand("replSetGetStatus");
+}
+
+replocal:PRIMARY> rs.status()
+{
+	"set" : "replocal",
+	"date" : ISODate("2017-01-06T16:16:27.323Z"),
+	"myState" : 1,
+	"term" : NumberLong(1),
+	"heartbeatIntervalMillis" : NumberLong(2000),
+	"members" : [
+		{
+			"_id" : 0,
+			"name" : "127.0.0.1:27017",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 2022,
+			"optime" : {
+				"ts" : Timestamp(1483719372, 1),
+				"t" : NumberLong(1)
+			},
+			"optimeDate" : ISODate("2017-01-06T16:16:12Z"),
+			"infoMessage" : "could not find member to sync from",
+			"electionTime" : Timestamp(1483719371, 2),
+			"electionDate" : ISODate("2017-01-06T16:16:11Z"),
+			"configVersion" : 1,
+			"self" : true
+		}
+	],
+	"ok" : 1
+}
+
+```
+
+You can tail the oplog at
+
+```
+replocal:PRIMARY> use local
+switched to db local
+replocal:PRIMARY> db.getCollection('oplog.rs').find()
+```
+
+...lots of output here
+
 ==========================================================
 
 ## Available Scripts
