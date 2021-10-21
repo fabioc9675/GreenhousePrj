@@ -71,6 +71,11 @@ Create a data/db in your home directory
 5. mkdir db
 6. mongod --dbpath ~/data/db press enter then just keep it running.
 
+### Export and import data to mongoDB
+
+- import: `use mongoimport --db mern-tasks --collection greenhouses --file /Users/fing140323/Desktop/huertaprueba.json`
+- export: `mongoexport --db mern-tasks -c greenhouses --out /Users/fing140323/Desktop/huertaprueba.json`
+
 ### MongoDB Replica set configuration
 
 Follow the indications on this URL: https://gist.github.com/davisford/bb37079900888c44d2bbcb2c52a5d6e8
