@@ -83,7 +83,7 @@ class App extends Component {
           for (var i = 0; i < data.length; i++) {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
-            data[i].hour = moment(createAt).format("hh:mm:ss");
+            data[i].hour = moment(createAt).format("LT"); // .format("hh:mm:ss a");
           }
           this.setState({ greenhouses: data });
           console.log(this.state.greenhouses);
@@ -100,7 +100,7 @@ class App extends Component {
           for (var i = 0; i < data.length; i++) {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
-            data[i].hour = moment(createAt).format("hh:mm:ss");
+            data[i].hour = moment(createAt).format("LT"); // .format("hh:mm a");
           }
           this.setState({ greenhouses: data });
           console.log(this.state.greenhouses);
@@ -116,7 +116,7 @@ class App extends Component {
         res.json().then((data) => {
           var createAt = new Date(data[0].createdAt);
           data[0].date = moment(createAt).format("YYYY-MM-D");
-          data[0].hour = moment(createAt).format("hh:mm:ss");
+          data[0].hour = moment(createAt).format("LT"); // .format("hh:mm a");
           this.setState({ lastGreenhouse: data[0] });
           console.log(this.state.lastGreenhouse);
         })
@@ -139,12 +139,10 @@ class App extends Component {
     var datePicker = document.getElementById("dateSelector");
     var date = new Date(datePicker.value);
 
-    const dateInit = moment(date).format("YYYY-MM-D");
+    const dateInit = moment(date).utc().format(); // format("YYYY-MM-D");
     // const myDate = moment(date).format("MMM D, YYYY");
-
     date.setUTCDate(date.getUTCDate() + 1);
-
-    const dateEnd = moment(date).utc().format("YYYY-MM-D");
+    const dateEnd = moment(date).utc().format();
 
     console.log("Data request");
     this.setState({
