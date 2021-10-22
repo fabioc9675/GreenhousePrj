@@ -37,11 +37,11 @@ routes: contains routing between code
 - `npm install react-materialize` use materialize components
 - `npm install moment` use date time formater
 
-Use of MaterializeCSS through CDN `www.materializecss.com` copy the CSS part into index.html, alse add the icons provided for materialize
+Use of MaterializeCSS through CDN www.materializecss.com copy the CSS part into index.html, alse add the icons provided for materialize
 
 It is necessary to add JSON Web Token to guarant that the res api is just accessed by the app, and the use of login
 
-Example with socketio `https://github.com/JackZheng10/Thought-Wall.git`
+Example with socketio https://github.com/JackZheng10/Thought-Wall.git
 
 ## Local Database
 
@@ -54,13 +54,13 @@ Example with socketio `https://github.com/JackZheng10/Thought-Wall.git`
 
 ### Mongosse types
 
-Visit the URL: `https://mongoosejs.com/docs/schematypes.html`
+Visit the URL: https://mongoosejs.com/docs/schematypes.html
 
 ### MongoDB installation in Raspberry Pi
 
-Follow the indications provided in the link: `https://www.mongodb.com/developer/how-to/mongodb-on-raspberry-pi/`
+Follow the indications provided in the link: https://www.mongodb.com/developer/how-to/mongodb-on-raspberry-pi/
 
-If you have problems with initialization of the DB into raspberry follow the URL: `https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0-0-1-27017/705/3`
+If you have problems with initialization of the DB into raspberry follow the URL: https://www.mongodb.com/community/forums/t/error-couldnt-connect-to-server-127-0-0-1-27017/705/3
 
 Create a data/db in your home directory
 
