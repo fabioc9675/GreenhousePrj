@@ -36,7 +36,7 @@ class App extends Component {
       greenhouses: [],
       dateInit: dateInit,
       dateEnd: dateEnd,
-      dateComp: {},
+      dateComp: "",
       lastGreenhouse: {},
       // myDate: myDate,
     };
@@ -80,12 +80,15 @@ class App extends Component {
     fetch(`/api/greenhouse/inst/${this.state.institution}`)
       .then((res) =>
         res.json().then((data) => {
+          var dateQuery = "No hay datos para esta fecha";
           for (var i = 0; i < data.length; i++) {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
             data[i].hour = moment(createAt).format("LT"); // .format("hh:mm:ss a");
+            dateQuery = moment(createAt).format("LL");
           }
           this.setState({ greenhouses: data });
+          this.setState({ dateComp: dateQuery });
           console.log(this.state.greenhouses);
         })
       )
@@ -97,12 +100,15 @@ class App extends Component {
     fetch(`/api/greenhouse/inst/${this.state.institution}/date/${di}/${de}`)
       .then((res) =>
         res.json().then((data) => {
+          var dateQuery = "No hay datos para esta fecha";
           for (var i = 0; i < data.length; i++) {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
             data[i].hour = moment(createAt).format("LT"); // .format("hh:mm a");
+            dateQuery = moment(createAt).format("LL");
           }
           this.setState({ greenhouses: data });
+          this.setState({ dateComp: dateQuery });
           console.log(this.state.greenhouses);
         })
       )
@@ -200,6 +206,7 @@ class App extends Component {
                 data={this.state.greenhouses}
                 xDataKey="hour"
                 yDataKey="temp_env"
+                date={this.state.dateComp}
               />
             </CollapsibleItem>
             <CollapsibleItem
@@ -212,6 +219,7 @@ class App extends Component {
                 data={this.state.greenhouses}
                 xDataKey="hour"
                 yDataKey="mois_env"
+                date={this.state.dateComp}
               />
             </CollapsibleItem>
             <CollapsibleItem
@@ -231,6 +239,7 @@ class App extends Component {
             <thead>
               <tr>
                 <th>Fecha</th>
+                <th>Hora</th>
                 <th>Temp. Amb.</th>
                 <th>Hume. Amb.</th>
                 <th>Radi. Amb.</th>
@@ -248,7 +257,8 @@ class App extends Component {
               {this.state.greenhouses.map((greenhouse) => {
                 return (
                   <tr key={greenhouse._id}>
-                    <td>{greenhouse.createdAt}</td>
+                    <td>{greenhouse.date}</td>
+                    <td>{greenhouse.hour}</td>
                     <td>{greenhouse.temp_env}</td>
                     <td>{greenhouse.mois_env}</td>
                     <td>{greenhouse.radi_env}</td>
