@@ -16,7 +16,7 @@ function DataChart(props) {
   // definition of language Used in simulator
   const { data, xDataKey, yDataKey, date, unit } = props;
 
-  const color = "#8884d8"; // chart color
+  const color = "#8e24aa"; // chart color
 
   /* 
   const CustomTooltip = ({ active, payload, label }) => {

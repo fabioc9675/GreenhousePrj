@@ -179,7 +179,6 @@ class App extends Component {
           <DatePicker
             label="Fecha de observación"
             id="dateSelector"
-            value={this.state.dateComp}
             onChange={(newDate) => {
               this.handleChange({
                 target: {
@@ -187,6 +186,23 @@ class App extends Component {
                   value: newDate,
                 },
               });
+            }}
+            options={{
+              setDefaultDate: true,
+              defaultDate: new Date(this.state.dateComp),
+              disableDayFn: function (date) {
+                let disableListDate = [
+                  new Date(moment("2021-10-05").format("ll")).toDateString(),
+                  new Date(moment("2021-10-06").format("ll")).toDateString(),
+                ];
+                console.log("disable ", disableListDate);
+
+                if (disableListDate.includes(date.toDateString())) {
+                  return true;
+                } else {
+                  return false;
+                }
+              },
             }}
           />
           <button
