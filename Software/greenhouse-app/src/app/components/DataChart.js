@@ -14,7 +14,32 @@ import {
 
 function DataChart(props) {
   // definition of language Used in simulator
-  const { data, xDataKey, yDataKey, date } = props;
+  const { data, xDataKey, yDataKey, date, unit } = props;
+
+  const color = "#8884d8"; // chart color
+
+  /* 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          className="custom-tooltip"
+          style={{
+            margin: "0px",
+            padding: "10px",
+            backgroundColor: "rgb(255, 255, 255)",
+            opacity: "80%",
+          }}
+        >
+          <div className="label">{`Hora: ${label}`}</div>
+          <div className="intro">{`Valor: ${payload[0].value} ${unit}`}</div>
+        </div>
+      );
+    }
+
+    return null;
+  };
+  */
 
   return (
     <div className="col">
@@ -23,24 +48,33 @@ function DataChart(props) {
         width={800}
         height={200}
         data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
+        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+            <stop offset="95%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey={xDataKey} />
+        <XAxis
+          dataKey={xDataKey}
+          padding={{ left: 20, right: 20 }}
+          interval="preserveStartEnd"
+        />
         <YAxis />
-        <Tooltip />
+        <Tooltip /*content={<CustomTooltip />}*/ />
         {/*<Legend />*/}
         <Area
           type="monotone"
           dataKey={yDataKey}
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke={color}
+          fillOpacity={1}
+          fill="url(#colorUv)"
           activeDot={{ r: 8 }}
+          dot={{ r: 4 }}
+          name="Valor"
+          unit={unit}
         />
       </AreaChart>
     </div>

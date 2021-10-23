@@ -211,6 +211,7 @@ class App extends Component {
                 xDataKey="hour"
                 yDataKey="temp_env"
                 date={this.state.dateComp}
+                unit="ºC"
               />
             </CollapsibleItem>
             <CollapsibleItem
@@ -224,6 +225,7 @@ class App extends Component {
                 xDataKey="hour"
                 yDataKey="mois_env"
                 date={this.state.dateComp}
+                unit="%"
               />
             </CollapsibleItem>
             <CollapsibleItem
@@ -239,7 +241,7 @@ class App extends Component {
         </div>
 
         <div className="container">
-          <table>
+          <table className="responsive-table striped">
             <thead>
               <tr>
                 <th>Fecha</th>
