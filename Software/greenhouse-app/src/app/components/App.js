@@ -25,10 +25,13 @@ class App extends Component {
   constructor() {
     // set the current date
     var date = new Date();
-    const dateInit = moment(date).format("YYYY-MM-D");
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    const dateInit = moment(date).utc().format(); // format("YYYY-MM-D");
     // const myDate = moment(date).format("MMM D, YYYY");
-    date.setDate(date.getDate() + 1);
-    const dateEnd = moment(date).format("YYYY-MM-D");
+    date.setUTCDate(date.getUTCDate() + 1);
+    const dateEnd = moment(date).utc().format();
 
     super();
     this.state = {
@@ -85,7 +88,7 @@ class App extends Component {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
             data[i].hour = moment(createAt).format("LT"); // .format("hh:mm:ss a");
-            dateQuery = moment(createAt).format("LL");
+            dateQuery = moment(createAt).format("ll");
           }
           this.setState({ greenhouses: data });
           this.setState({ dateComp: dateQuery });
@@ -105,7 +108,7 @@ class App extends Component {
             var createAt = new Date(data[i].createdAt);
             data[i].date = moment(createAt).format("YYYY-MM-D");
             data[i].hour = moment(createAt).format("LT"); // .format("hh:mm a");
-            dateQuery = moment(createAt).format("LL");
+            dateQuery = moment(createAt).format("ll");
           }
           this.setState({ greenhouses: data });
           this.setState({ dateComp: dateQuery });
@@ -176,6 +179,7 @@ class App extends Component {
           <DatePicker
             label="Fecha de observación"
             id="dateSelector"
+            value={this.state.dateComp}
             onChange={(newDate) => {
               this.handleChange({
                 target: {
