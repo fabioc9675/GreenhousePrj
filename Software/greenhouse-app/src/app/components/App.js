@@ -1,18 +1,6 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
 import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-
-// import data of configuration
-import dataConfig from "../../dataConfig/dataConfig.json";
-import {
   Collapsible,
   CollapsibleItem,
   DatePicker,
@@ -20,6 +8,9 @@ import {
 } from "react-materialize";
 import moment from "moment";
 import DataChart from "./DataChart";
+
+// import data of configuration
+import dataConfig from "../../dataConfig/dataConfig.json";
 
 class App extends Component {
   constructor() {
@@ -36,13 +27,13 @@ class App extends Component {
     super();
     this.state = {
       institution: dataConfig.institution, // load institute environment variable
-      greenhouses: [],
-      dateInit: dateInit,
+      instName: dataConfig.institutionName, // load institution name
+      greenhouses: [], // load Greenhouse data payload from database
+      dateInit: dateInit, // calculate data between
       dateEnd: dateEnd,
-      dateComp: "",
-      availableDates: [],
-      lastGreenhouse: {},
-      // myDate: myDate,
+      dateComp: "", // data to load current day
+      availableDates: [], // Available dates in database
+      lastGreenhouse: {}, // real time acquisition and show
     };
 
     // Associate events with the component
@@ -64,9 +55,9 @@ class App extends Component {
     });
 
     // load data
-    this.fetchGreenhouseAvailableDates();
-    this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd);
-    this.fetchLastGreenhouse();
+    this.fetchGreenhouseAvailableDates(); // Available dates in database
+    this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd); // data by date
+    this.fetchLastGreenhouse(); // last data in database
 
     // set time interval for someting usefull
     // this.timer = setInterval(() => {
@@ -94,7 +85,7 @@ class App extends Component {
           }
           this.setState({ greenhouses: data });
           this.setState({ dateComp: dateQuery });
-          console.log(this.state.greenhouses);
+          // console.log(this.state.greenhouses);
         })
       )
       .catch((err) => console.error(err));
@@ -112,7 +103,7 @@ class App extends Component {
             new Date(moment(this.dateComp).format("ll")).toDateString()
           );
           this.setState({ availableDates: dates });
-          console.log(this.state.availableDates);
+          // console.log(this.state.availableDates);
         })
       )
       .catch((err) => console.error(err));
@@ -132,7 +123,7 @@ class App extends Component {
           }
           this.setState({ greenhouses: data });
           this.setState({ dateComp: dateQuery });
-          console.log(this.state.greenhouses);
+          // console.log(this.state.greenhouses);
         })
       )
       .catch((err) => console.error(err));
@@ -146,14 +137,22 @@ class App extends Component {
           var createAt = new Date(data[0].createdAt);
           data[0].date = moment(createAt).format("YYYY-MM-D");
           data[0].hour = moment(createAt).format("LT"); // .format("hh:mm a");
+          data[0].temp_earth_1 = data[0].temp_earth[0];
+          data[0].temp_earth_2 = data[0].temp_earth[1];
+          data[0].temp_earth_3 = data[0].temp_earth[2];
+          data[0].temp_earth_4 = data[0].temp_earth[3];
+          data[0].humi_earth_1 = data[0].humi_earth[0];
+          data[0].humi_earth_2 = data[0].humi_earth[1];
+          data[0].humi_earth_3 = data[0].humi_earth[2];
+          data[0].humi_earth_4 = data[0].humi_earth[3];
           this.setState({ lastGreenhouse: data[0] });
-          console.log(this.state.lastGreenhouse);
+          // console.log(this.state.lastGreenhouse);
         })
       )
       .catch((err) => console.error(err));
   }
 
-  // function to handle change
+  // function to handle change in datePicker
   handleChange(e) {
     // this.fetchTaskbyDate();
     const dateInit = moment(e.target.value).format("YYYY-MM-D");
@@ -173,7 +172,7 @@ class App extends Component {
     date.setUTCDate(date.getUTCDate() + 1);
     const dateEnd = moment(date).utc().format();
 
-    console.log("Data request");
+    // console.log("Data request");
     this.setState({
       dateInit: dateInit,
       dateEnd: dateEnd,
@@ -190,7 +189,7 @@ class App extends Component {
         <nav className="light-blue darken-4">
           <div className="container">
             <a className="brand-logo" href="/">
-              Proyecto Invernadero, Institución {this.state.institution}
+              Proyecto Invernadero, {this.state.instName}
             </a>
           </div>
         </nav>
@@ -235,7 +234,6 @@ class App extends Component {
               header={`Temperatura ambiente = ${this.state.lastGreenhouse.temp_env} ºC`}
               icon={<Icon>filter_drama</Icon>}
               node="div"
-              style={{ justifyItems: "center" }}
             >
               <DataChart
                 data={this.state.greenhouses}
@@ -261,52 +259,85 @@ class App extends Component {
             </CollapsibleItem>
             <CollapsibleItem
               expanded={false}
-              header="You know, FYI, you can buy a paddle. Did you not plan for this contingency?"
-              icon={<Icon>whatshot</Icon>}
+              header={`Radición Solar = ${this.state.lastGreenhouse.radi_env} `}
+              icon={<Icon>filter_drama</Icon>}
               node="div"
             >
-              You know, FYI, you can buy a paddle. Did you not plan for this
-              contingency?
+              <DataChart
+                data={this.state.greenhouses}
+                xDataKey="hour"
+                yDataKey="radi_env"
+                date={this.state.dateComp}
+                unit=""
+              />
+            </CollapsibleItem>
+            <CollapsibleItem
+              expanded={false}
+              header={`Temperatura Suelo 1 = ${this.state.lastGreenhouse.temp_earth_1} ºC`}
+              icon={<Icon>filter_drama</Icon>}
+              node="div"
+            >
+              <DataChart
+                data={this.state.greenhouses}
+                xDataKey="hour"
+                yDataKey="temp_earth[0]"
+                date={this.state.dateComp}
+                unit="ºC"
+              />
+            </CollapsibleItem>
+            <CollapsibleItem
+              expanded={false}
+              header={`Humedad Suelo 1 = ${this.state.lastGreenhouse.humi_earth_1} %`}
+              icon={<Icon>filter_drama</Icon>}
+              node="div"
+            >
+              <DataChart
+                data={this.state.greenhouses}
+                xDataKey="hour"
+                yDataKey="humi_earth[0]"
+                date={this.state.dateComp}
+                unit="%"
+              />
             </CollapsibleItem>
           </Collapsible>
         </div>
 
         <div className="container">
-          <table className="responsive-table striped">
+          <table className="responsive-table striped centered">
             <thead>
               <tr>
-                <th>Fecha</th>
+                {/*<th>Fecha</th>*/}
                 <th>Hora</th>
-                <th>Temp. Amb.</th>
-                <th>Hume. Amb.</th>
-                <th>Radi. Amb.</th>
-                <th>Temp. Sue. 1</th>
-                <th>Temp. Sue. 2</th>
-                <th>Temp. Sue. 3</th>
-                <th>Temp. Sue. 4</th>
-                <th>Hume. Sue. 1</th>
-                <th>Hume. Sue. 2</th>
-                <th>Hume. Sue. 3</th>
-                <th>Hume. Sue. 4</th>
+                <th>Temperatura Ambiente</th>
+                <th>Humedad Ambiente</th>
+                <th>Radición Solar</th>
+                <th>Temperatura Suelo 1</th>
+                {/*<th>Temp. Sue. 2</th>*/}
+                {/*<th>Temp. Sue. 3</th>*/}
+                {/*<th>Temp. Sue. 4</th>*/}
+                <th>Humedad Suelo 1</th>
+                {/*<th>Hume. Sue. 2</th>*/}
+                {/*<th>Hume. Sue. 3</th>*/}
+                {/*<th>Hume. Sue. 4</th>*/}
               </tr>
             </thead>
             <tbody>
               {this.state.greenhouses.map((greenhouse) => {
                 return (
                   <tr key={greenhouse._id}>
-                    <td>{greenhouse.date}</td>
+                    {/*<td>{greenhouse.date}</td>*/}
                     <td>{greenhouse.hour}</td>
-                    <td>{greenhouse.temp_env}</td>
-                    <td>{greenhouse.mois_env}</td>
+                    <td>{greenhouse.temp_env} ºC</td>
+                    <td>{greenhouse.mois_env} %</td>
                     <td>{greenhouse.radi_env}</td>
-                    <td>{greenhouse.temp_earth[0]}</td>
-                    <td>{greenhouse.temp_earth[1]}</td>
-                    <td>{greenhouse.temp_earth[2]}</td>
-                    <td>{greenhouse.temp_earth[3]}</td>
-                    <td>{greenhouse.humi_earth[0]}</td>
-                    <td>{greenhouse.humi_earth[1]}</td>
-                    <td>{greenhouse.humi_earth[2]}</td>
-                    <td>{greenhouse.humi_earth[3]}</td>
+                    <td>{greenhouse.temp_earth[0]} ºC</td>
+                    {/*<td>{greenhouse.temp_earth[1]}</td>*/}
+                    {/*<td>{greenhouse.temp_earth[2]}</td>*/}
+                    {/*<td>{greenhouse.temp_earth[3]}</td>*/}
+                    <td>{greenhouse.humi_earth[0]} %</td>
+                    {/*<td>{greenhouse.humi_earth[1]}</td>*/}
+                    {/*<td>{greenhouse.humi_earth[2]}</td>*/}
+                    {/*<td>{greenhouse.humi_earth[3]}</td>*/}
                   </tr>
                 );
               })}

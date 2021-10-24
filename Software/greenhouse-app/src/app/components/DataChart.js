@@ -1,15 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   AreaChart,
-  LineChart,
   Area,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  LabelList,
 } from "recharts";
 
 function DataChart(props) {
@@ -18,34 +14,11 @@ function DataChart(props) {
 
   const color = "#8e24aa"; // chart color
 
-  /* 
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div
-          className="custom-tooltip"
-          style={{
-            margin: "0px",
-            padding: "10px",
-            backgroundColor: "rgb(255, 255, 255)",
-            opacity: "80%",
-          }}
-        >
-          <div className="label">{`Hora: ${label}`}</div>
-          <div className="intro">{`Valor: ${payload[0].value} ${unit}`}</div>
-        </div>
-      );
-    }
-
-    return null;
-  };
-  */
-
   return (
     <div className="col">
       <div className="container">{`Fecha de consulta = ${date}`}</div>
       <AreaChart
-        width={800}
+        width={900}
         height={200}
         data={data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
