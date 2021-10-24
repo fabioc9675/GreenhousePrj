@@ -10,7 +10,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           expanded={false}
           header={`Última temperatura ambiente = ${data.temp_env} ºC`}
-          icon={<Icon>filter_drama</Icon>}
+          icon={<Icon>thermostat</Icon>}
           node="div"
         >
           <DataChart
@@ -25,7 +25,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           expanded={false}
           header={`Última humedad relativa ambiente = ${data.mois_env} %`}
-          icon={<Icon>place</Icon>}
+          icon={<Icon>filter_drama</Icon>}
           node="div"
         >
           <DataChart
@@ -40,7 +40,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           expanded={false}
           header={`Última radición Solar = ${data.radi_env} `}
-          icon={<Icon>filter_drama</Icon>}
+          icon={<Icon>light_mode</Icon>}
           node="div"
         >
           <DataChart
@@ -55,7 +55,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           expanded={false}
           header={`Última Temperatura Suelo 1 = ${data.temp_earth_1} ºC`}
-          icon={<Icon>filter_drama</Icon>}
+          icon={<Icon>grass</Icon>}
           node="div"
         >
           <DataChart
@@ -70,7 +70,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           expanded={false}
           header={`Última humedad Suelo 1 = ${data.humi_earth_1} %`}
-          icon={<Icon>filter_drama</Icon>}
+          icon={<Icon>water_drop</Icon>}
           node="div"
         >
           <DataChart
