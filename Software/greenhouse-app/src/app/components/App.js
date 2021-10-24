@@ -223,7 +223,7 @@ class App extends Component {
           </button>
         </div>
 
-        <div className="container">
+        <div>
           <DataCollapsible
             data={this.state.lastGreenhouse}
             data2Chart={this.state.greenhouses}
@@ -231,7 +231,7 @@ class App extends Component {
           />
         </div>
 
-        <div className="container">
+        <div>
           <DataTable data={this.state.greenhouses} />
         </div>
       </div>
