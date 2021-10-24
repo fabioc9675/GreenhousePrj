@@ -47,6 +47,22 @@ router.get("/inst/:inst", async (req, res) => {
   res.json(greenhouse);
 });
 
+// reading dates actives by institution
+router.get("/datesInst/:inst", async (req, res) => {
+  // make a request to the database
+  // Examples
+  // http://localhost:3000/api/greenhouse/inst/UdeA
+  const institute = req.params.inst;
+  const greenhouse = await Greenhouse.find(
+    {
+      institution: institute,
+    },
+    { createdAt: 1, _id: 0 } // asking just for createdAt without _id
+  );
+  // when client ask for '/' server response
+  res.json(greenhouse);
+});
+
 // reading data by institution and numHouse
 router.get("/inst/:inst/numH/:numH", async (req, res) => {
   // make a request to the database

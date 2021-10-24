@@ -40,6 +40,7 @@ class App extends Component {
       dateInit: dateInit,
       dateEnd: dateEnd,
       dateComp: "",
+      availableDates: [],
       lastGreenhouse: {},
       // myDate: myDate,
     };
@@ -63,6 +64,7 @@ class App extends Component {
     });
 
     // load data
+    this.fetchGreenhouseAvailableDates();
     this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd);
     this.fetchLastGreenhouse();
 
@@ -93,6 +95,24 @@ class App extends Component {
           this.setState({ greenhouses: data });
           this.setState({ dateComp: dateQuery });
           console.log(this.state.greenhouses);
+        })
+      )
+      .catch((err) => console.error(err));
+  }
+
+  // function to make a query of all availabe dates
+  fetchGreenhouseAvailableDates() {
+    fetch(`/api/greenhouse/datesInst/${this.state.institution}`)
+      .then((res) =>
+        res.json().then((data) => {
+          var dates = data.map((dat) => {
+            return new Date(moment(dat.createdAt).format("ll")).toDateString();
+          });
+          dates.push(
+            new Date(moment(this.dateComp).format("ll")).toDateString()
+          );
+          this.setState({ availableDates: dates });
+          console.log(this.state.availableDates);
         })
       )
       .catch((err) => console.error(err));
@@ -190,17 +210,12 @@ class App extends Component {
             options={{
               setDefaultDate: true,
               defaultDate: new Date(this.state.dateComp),
-              disableDayFn: function (date) {
-                let disableListDate = [
-                  new Date(moment("2021-10-05").format("ll")).toDateString(),
-                  new Date(moment("2021-10-06").format("ll")).toDateString(),
-                ];
-                console.log("disable ", disableListDate);
-
-                if (disableListDate.includes(date.toDateString())) {
-                  return true;
-                } else {
+              disableDayFn: (date) => {
+                // console.log(this.state.availableDates);
+                if (this.state.availableDates.includes(date.toDateString())) {
                   return false;
+                } else {
+                  return true;
                 }
               },
             }}
