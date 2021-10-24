@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
-import {
-  Collapsible,
-  CollapsibleItem,
-  DatePicker,
-  Icon,
-} from "react-materialize";
+import { DatePicker } from "react-materialize";
 import moment from "moment";
-import DataChart from "./DataChart";
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
+import DataTable from "./DataTable";
+import DataCollapsible from "./DataCollapsible";
 
 class App extends Component {
   constructor() {
@@ -228,121 +224,15 @@ class App extends Component {
         </div>
 
         <div className="container">
-          <Collapsible accordion={false} popout>
-            <CollapsibleItem
-              expanded={false}
-              header={`Temperatura ambiente = ${this.state.lastGreenhouse.temp_env} ºC`}
-              icon={<Icon>filter_drama</Icon>}
-              node="div"
-            >
-              <DataChart
-                data={this.state.greenhouses}
-                xDataKey="hour"
-                yDataKey="temp_env"
-                date={this.state.dateComp}
-                unit="ºC"
-              />
-            </CollapsibleItem>
-            <CollapsibleItem
-              expanded={false}
-              header={`Humedad relativa ambiente = ${this.state.lastGreenhouse.mois_env} %`}
-              icon={<Icon>place</Icon>}
-              node="div"
-            >
-              <DataChart
-                data={this.state.greenhouses}
-                xDataKey="hour"
-                yDataKey="mois_env"
-                date={this.state.dateComp}
-                unit="%"
-              />
-            </CollapsibleItem>
-            <CollapsibleItem
-              expanded={false}
-              header={`Radición Solar = ${this.state.lastGreenhouse.radi_env} `}
-              icon={<Icon>filter_drama</Icon>}
-              node="div"
-            >
-              <DataChart
-                data={this.state.greenhouses}
-                xDataKey="hour"
-                yDataKey="radi_env"
-                date={this.state.dateComp}
-                unit=""
-              />
-            </CollapsibleItem>
-            <CollapsibleItem
-              expanded={false}
-              header={`Temperatura Suelo 1 = ${this.state.lastGreenhouse.temp_earth_1} ºC`}
-              icon={<Icon>filter_drama</Icon>}
-              node="div"
-            >
-              <DataChart
-                data={this.state.greenhouses}
-                xDataKey="hour"
-                yDataKey="temp_earth[0]"
-                date={this.state.dateComp}
-                unit="ºC"
-              />
-            </CollapsibleItem>
-            <CollapsibleItem
-              expanded={false}
-              header={`Humedad Suelo 1 = ${this.state.lastGreenhouse.humi_earth_1} %`}
-              icon={<Icon>filter_drama</Icon>}
-              node="div"
-            >
-              <DataChart
-                data={this.state.greenhouses}
-                xDataKey="hour"
-                yDataKey="humi_earth[0]"
-                date={this.state.dateComp}
-                unit="%"
-              />
-            </CollapsibleItem>
-          </Collapsible>
+          <DataCollapsible
+            data={this.state.lastGreenhouse}
+            data2Chart={this.state.greenhouses}
+            dateUpdate={this.state.dateComp}
+          />
         </div>
 
         <div className="container">
-          <table className="responsive-table striped centered">
-            <thead>
-              <tr>
-                {/*<th>Fecha</th>*/}
-                <th>Hora</th>
-                <th>Temperatura Ambiente</th>
-                <th>Humedad Ambiente</th>
-                <th>Radición Solar</th>
-                <th>Temperatura Suelo 1</th>
-                {/*<th>Temp. Sue. 2</th>*/}
-                {/*<th>Temp. Sue. 3</th>*/}
-                {/*<th>Temp. Sue. 4</th>*/}
-                <th>Humedad Suelo 1</th>
-                {/*<th>Hume. Sue. 2</th>*/}
-                {/*<th>Hume. Sue. 3</th>*/}
-                {/*<th>Hume. Sue. 4</th>*/}
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.greenhouses.map((greenhouse) => {
-                return (
-                  <tr key={greenhouse._id}>
-                    {/*<td>{greenhouse.date}</td>*/}
-                    <td>{greenhouse.hour}</td>
-                    <td>{greenhouse.temp_env} ºC</td>
-                    <td>{greenhouse.mois_env} %</td>
-                    <td>{greenhouse.radi_env}</td>
-                    <td>{greenhouse.temp_earth[0]} ºC</td>
-                    {/*<td>{greenhouse.temp_earth[1]}</td>*/}
-                    {/*<td>{greenhouse.temp_earth[2]}</td>*/}
-                    {/*<td>{greenhouse.temp_earth[3]}</td>*/}
-                    <td>{greenhouse.humi_earth[0]} %</td>
-                    {/*<td>{greenhouse.humi_earth[1]}</td>*/}
-                    {/*<td>{greenhouse.humi_earth[2]}</td>*/}
-                    {/*<td>{greenhouse.humi_earth[3]}</td>*/}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <DataTable data={this.state.greenhouses} />
         </div>
       </div>
     );

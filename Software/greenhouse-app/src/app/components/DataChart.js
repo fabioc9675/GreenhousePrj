@@ -10,9 +10,7 @@ import {
 
 function DataChart(props) {
   // definition of language Used in simulator
-  const { data, xDataKey, yDataKey, date, unit } = props;
-
-  const color = "#8e24aa"; // chart color
+  const { data, xDataKey, yDataKey, date, unit, color } = props;
 
   return (
     <div className="col">
