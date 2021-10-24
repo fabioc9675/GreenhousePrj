@@ -19,7 +19,7 @@ function DataCollapsible(props) {
             yDataKey="temp_env"
             date={dateUpdate}
             unit="ºC"
-            color="#8e24aa"
+            color="#f44336"
           />
         </CollapsibleItem>
         <CollapsibleItem
@@ -49,7 +49,7 @@ function DataCollapsible(props) {
             yDataKey="radi_env"
             date={dateUpdate}
             unit=""
-            color="#8e24aa"
+            color="#3f51b5"
           />
         </CollapsibleItem>
         <CollapsibleItem
@@ -64,7 +64,7 @@ function DataCollapsible(props) {
             yDataKey="temp_earth[0]"
             date={dateUpdate}
             unit="ºC"
-            color="#8e24aa"
+            color="#009688"
           />
         </CollapsibleItem>
         <CollapsibleItem
@@ -79,7 +79,7 @@ function DataCollapsible(props) {
             yDataKey="humi_earth[0]"
             date={dateUpdate}
             unit="%"
-            color="#8e24aa"
+            color="#2e7d32"
           />
         </CollapsibleItem>
       </Collapsible>
