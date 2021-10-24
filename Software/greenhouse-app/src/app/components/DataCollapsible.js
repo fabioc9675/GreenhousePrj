@@ -19,7 +19,7 @@ function DataCollapsible(props) {
             yDataKey="temp_env"
             date={dateUpdate}
             unit="ºC"
-            color="#f44336"
+            color="#f06292"
           />
         </CollapsibleItem>
         <CollapsibleItem
