@@ -7,9 +7,13 @@
             "compilerArgs": [],
             "intelliSenseMode": "macos-clang-x64",
             "includePath": [
-                "${default}"
+                "${default}",
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/**",
+                "/Applications/Arduino.app/Contents/Java/tools/**"
             ],
-            "forcedInclude": [],
+            "forcedInclude": [
+                "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ],
             "cStandard": "c11",
             "cppStandard": "c++98",
             "defines": []
