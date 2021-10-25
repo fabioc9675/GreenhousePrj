@@ -21,10 +21,13 @@ To run the script and the app as system service use:
 
 nohup means don't kill the process
 -u means dont need buffer, write out everytime
+
 > out: to record the output in out file (`tail -f out`) to see the last few lines of the file
-& to run as a background process
+> & to run as a background process
 
 use `kill -9 "process"`
 
 - `ps ax | grep script.py` to see the process
 - `ps ax | grep dataReader.py` to see the process
+
+Use `sudo chmod 777 ttyACM0` to give permissions to the device to connect through USB USART

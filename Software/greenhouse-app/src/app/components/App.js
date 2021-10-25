@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
-import { DatePicker, Footer, Parallax } from "react-materialize";
+import { Caption, DatePicker, Footer, Slide, Slider } from "react-materialize";
 import moment from "moment";
 import { FaGithubSquare, FaYoutubeSquare } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -258,27 +258,52 @@ class App extends Component {
           />
         </div>
         <div className="container blue-grey darken-4 center">
-          <Parallax
-            image={
-              <img
-                alt=""
-                src="http://materializecss.com/images/parallax1.jpg"
-              />
-            }
+          <Slider
+            fullscreen={false}
             options={{
-              responsiveThreshold: 0,
+              duration: 1000,
+              height: 400,
+              indicators: true,
+              interval: 6000,
             }}
           >
-            <img alt="" src="resources/photos/Foto_03.jpg" width="95%" />
-          </Parallax>
+            <Slide image={<img alt="" src="resources/photos/Foto_01.png" />}>
+              <Caption placement="left">
+                <h3>Nuestra huerta Inteligente</h3>
+                <h5 className="white black-text">
+                  Acercamos las capacidades de la industria 4.0 a los niños.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_02.jpg" />}>
+              <Caption placement="right">
+                <h3>Nuestros pequeños científicos</h3>
+                <h5 className="white black-text">
+                  Fortalecemos en los niños su capacidad de investigación e
+                  innovación.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_03.jpg" />}>
+              <Caption placement="center">
+                <h3>Esta es nuestra motivación</h3>
+                <h5 className="white black-text">
+                  Fomentar el desarrollo tecnológico del país.
+                </h5>
+              </Caption>
+            </Slide>
+          </Slider>
         </div>
         <div>
-          <DataTable data={this.state.greenhouses} />
+          <DataTable
+            data={this.state.greenhouses}
+            dateUpdate={this.state.dateComp}
+          />
         </div>
 
         <Footer
           className="green darken-4"
-          copyrights="Copyright: Instituto de Física"
+          copyrights="Powered by: Instituto de Física"
           moreLinks={
             <div>
               <a

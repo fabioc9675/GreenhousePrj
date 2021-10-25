@@ -2,10 +2,10 @@ import React from "react";
 
 function DataTable(props) {
   // definition of props to use i the component
-  const { data } = props;
+  const { data, dateUpdate } = props;
   return (
     <div className="container ">
-      <h3>Tabla de datos: </h3>
+      <h4>Tabla de datos ({dateUpdate}): </h4>
       <div className="grey lighten-5">
         <table className="responsive-table striped centered">
           <thead>

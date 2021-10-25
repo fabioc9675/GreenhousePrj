@@ -71,6 +71,7 @@ function DataChart(props) {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <div className="container center">{`Hora en que se tomó el dato`}</div>
     </div>
   );
 }
