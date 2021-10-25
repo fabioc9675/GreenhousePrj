@@ -42,7 +42,7 @@ router.get("/inst/:inst", async (req, res) => {
   const institute = req.params.inst;
   const greenhouse = await Greenhouse.find({
     institution: institute,
-  });
+  }).sort({ createdAt: 1 });
   // when client ask for '/' server response
   res.json(greenhouse);
 });
@@ -73,7 +73,7 @@ router.get("/inst/:inst/numH/:numH", async (req, res) => {
   const greenhouse = await Greenhouse.find({
     institution: institute,
     numHouse: numHouse,
-  });
+  }).sort({ createdAt: 1 });
   // when client ask for '/' server response
   res.json(greenhouse);
 });
@@ -92,7 +92,7 @@ router.get("/inst/:inst/date/:start/:end", async (req, res) => {
       $gte: start,
       $lt: end,
     },
-  });
+  }).sort({ createdAt: 1 });
   // when client ask for '/' server response
   res.json(greenhouse);
 });
@@ -113,7 +113,7 @@ router.get("/inst/:inst/numH/:numH/date/:start/:end", async (req, res) => {
       $gte: start,
       $lt: end,
     },
-  });
+  }).sort({ createdAt: 1 });
   // when client ask for '/' server response
   res.json(greenhouse);
 });

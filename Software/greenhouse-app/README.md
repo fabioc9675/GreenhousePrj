@@ -75,8 +75,9 @@ Create a data/db in your home directory
 
 ### Export and import data to mongoDB
 
-- import: `use mongoimport --db mern-tasks --collection greenhouses --file /Users/fing140323/Desktop/huertaprueba.json`
+- import: use `mongoimport --db mern-tasks --collection greenhouses --file /Users/fing140323/Desktop/huertaprueba.json`
 - export: `mongoexport --db mern-tasks -c greenhouses --out /Users/fing140323/Desktop/huertaprueba.json`
+- run: sudo mongod --dbpath ~/data/db --replSet replocal`don't need to modificate mongod.conf, just use after this`rs.initiate({\_id: "replocal", members: [{_id: 0, host: "127.0.0.1:27017"}] })`
 
 ### MongoDB Replica set configuration
 
