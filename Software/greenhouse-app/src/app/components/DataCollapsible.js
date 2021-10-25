@@ -82,7 +82,7 @@ function DataCollapsible(props) {
           <DataChart
             data={data2Chart}
             xDataKey="hour"
-            yDataKey="humi_earth[0]"
+            yDataKey="humi_earth[1]"
             date={dateUpdate}
             unit="%"
             color="#2e7d32"
