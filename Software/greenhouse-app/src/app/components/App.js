@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
-import { DatePicker } from "react-materialize";
+import { DatePicker, Footer } from "react-materialize";
 import moment from "moment";
+import { FaGithubSquare, FaYoutubeSquare } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
 import DataTable from "./DataTable";
 import DataCollapsible from "./DataCollapsible";
+
+const udeaLogo = "resources/logos/UdeALogo.png";
 
 class App extends Component {
   constructor() {
@@ -234,6 +238,49 @@ class App extends Component {
         <div>
           <DataTable data={this.state.greenhouses} />
         </div>
+
+        <Footer
+          className="green darken-4"
+          copyrights="Copyright: Instituto de Física"
+          moreLinks={
+            <div>
+              <a
+                className="grey-text text-lighten-4"
+                href="https://github.com/fabioc9675"
+                target="_blank"
+              >
+                <FaGithubSquare size="3em" />
+              </a>
+              <a
+                className="grey-text text-lighten-4"
+                href="https://www.youtube.com/channel/UCWdd0P8N_Ug6H5iSZgOykQg"
+                target="_blank"
+              >
+                <FaYoutubeSquare size="3em" />
+              </a>
+
+              <a
+                className="grey-text text-lighten-4 right"
+                href="https://www.udea.edu.co"
+                target="_blank"
+              >
+                <img width="200px" src={udeaLogo} alt="" />
+              </a>
+            </div>
+          }
+        >
+          <h5 className="white-text">Proyecto Invernadero</h5>
+          <p className="grey-text text-lighten-4">
+            Proyecto apoyado por el instituto de física de la Universidad de
+            Antioquia
+          </p>
+          <p className="grey-text text-lighten-4">
+            Contactanos:{" "}
+            <a href="mailto:fabian.castano@udea.edu.co?Subject=[Proyecto%20Invernadero]">
+              <MdEmail size="2em" color="#FFFFFF" />
+            </a>{" "}
+          </p>
+        </Footer>
       </div>
     );
   }
