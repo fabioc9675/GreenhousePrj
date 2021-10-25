@@ -48,16 +48,10 @@ function DataChart(props) {
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={color} stopOpacity={0.8} />
-              <stop offset="95%" stopColor={color} stopOpacity={0} />
-            </linearGradient>
-          </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey={xDataKey}
-            padding={{ left: 20, right: 20 }}
+            padding={{ left: 10, right: 10 }}
             interval="preserveStartEnd"
           />
           <YAxis />
@@ -67,9 +61,10 @@ function DataChart(props) {
             type="monotone"
             dataKey={yDataKey}
             stroke={color}
-            fillOpacity={1}
-            fill="url(#colorUv)"
-            activeDot={{ r: 8 }}
+            strokeWidth={3.5}
+            fillOpacity={0.3}
+            fill={color}
+            activeDot={{ r: 7 }}
             dot={<CustomizedDot />} /*dot={{ r: 4 }}*/
             name="Valor"
             unit={unit}
