@@ -75,14 +75,14 @@ function DataCollapsible(props) {
         <CollapsibleItem
           className={color}
           expanded={false}
-          header={`Última humedad Suelo 1 = ${data.humi_earth_1} %`}
+          header={`Última humedad Suelo 2 = ${data.humi_earth_2} %`}
           icon={<Icon>water_drop</Icon>}
           node="div"
         >
           <DataChart
             data={data2Chart}
             xDataKey="hour"
-            yDataKey="humi_earth[0]"
+            yDataKey="humi_earth[1]"
             date={dateUpdate}
             unit="%"
             color="#2e7d32"

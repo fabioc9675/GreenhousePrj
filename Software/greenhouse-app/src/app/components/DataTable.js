@@ -19,8 +19,8 @@ function DataTable(props) {
               {/*<th>Temp. Sue. 2</th>*/}
               {/*<th>Temp. Sue. 3</th>*/}
               {/*<th>Temp. Sue. 4</th>*/}
-              <th>Humedad Suelo 1</th>
-              {/*<th>Hume. Sue. 2</th>*/}
+              {/*<th>Humedad Suelo 1</th>*/}
+              <th>Humedad Suelo 2</th>
               {/*<th>Hume. Sue. 3</th>*/}
               {/*<th>Hume. Sue. 4</th>*/}
             </tr>
@@ -38,8 +38,8 @@ function DataTable(props) {
                   {/*<td>{greenhouse.temp_earth[1]}</td>*/}
                   {/*<td>{greenhouse.temp_earth[2]}</td>*/}
                   {/*<td>{greenhouse.temp_earth[3]}</td>*/}
-                  <td>{greenhouse.humi_earth[0]} %</td>
-                  {/*<td>{greenhouse.humi_earth[1]}</td>*/}
+                  {/*<td>{greenhouse.humi_earth[0]} %</td>*/}
+                  <td>{greenhouse.humi_earth[1]}</td>
                   {/*<td>{greenhouse.humi_earth[2]}</td>*/}
                   {/*<td>{greenhouse.humi_earth[3]}</td>*/}
                 </tr>
