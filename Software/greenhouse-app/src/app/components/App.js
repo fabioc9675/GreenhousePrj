@@ -11,6 +11,7 @@ import DataTable from "./DataTable";
 import DataCollapsible from "./DataCollapsible";
 
 const udeaLogo = "resources/logos/UdeALogo.png";
+const instLogo = "resources/logos/IELaPaz.png";
 
 class App extends Component {
   constructor() {
@@ -196,12 +197,22 @@ class App extends Component {
       >
         {/** Navigation */}
         <nav className="light-blue darken-4">
-          <div className="container">
+          <div className="container" style={{ height: "100px" }}>
             <a className="brand-logo" href="/">
               Proyecto Invernadero, {this.state.instName}
             </a>
+
+            <a
+              className="grey-text text-lighten-4 right"
+              href="https://www.institucioneducativalapaz.edu.co/index.php"
+              target="_blank"
+            >
+              <img height="100px" src={instLogo} alt="" />
+            </a>
           </div>
         </nav>
+
+        <div style={{ height: "50px" }} />
 
         <div className="container ">
           <DatePicker

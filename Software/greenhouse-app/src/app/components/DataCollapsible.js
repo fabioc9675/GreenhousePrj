@@ -6,6 +6,7 @@ function DataCollapsible(props) {
   const { data, data2Chart, dateUpdate, color } = props;
   return (
     <div className="container ">
+      <h3>Gráficos de datos: </h3>
       <Collapsible accordion={false} popout>
         <CollapsibleItem
           className={color}
