@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
-import { DatePicker, Footer } from "react-materialize";
+import { DatePicker, Footer, Parallax } from "react-materialize";
 import moment from "moment";
 import { FaGithubSquare, FaYoutubeSquare } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -184,7 +184,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="teal lighten-5">
+      <div
+        style={{
+          backgroundImage: `url("/resources/photos/Foto_03_t.png")`,
+          height: "100%",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         {/** Navigation */}
         <nav className="light-blue darken-4">
           <div className="container">
@@ -235,7 +244,21 @@ class App extends Component {
             color="white"
           />
         </div>
-
+        <div className="container blue-grey darken-4 center">
+          <Parallax
+            image={
+              <img
+                alt=""
+                src="http://materializecss.com/images/parallax1.jpg"
+              />
+            }
+            options={{
+              responsiveThreshold: 0,
+            }}
+          >
+            <img alt="" src="resources/photos/Foto_03.jpg" width="95%" />
+          </Parallax>
+        </div>
         <div>
           <DataTable data={this.state.greenhouses} />
         </div>
