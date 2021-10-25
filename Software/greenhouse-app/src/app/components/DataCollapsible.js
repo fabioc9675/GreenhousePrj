@@ -75,7 +75,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           className={color}
           expanded={false}
-          header={`Última humedad Suelo 1 = ${data.humi_earth_1} %`}
+          header={`Última humedad Suelo 2 = ${data.humi_earth_2} %`}
           icon={<Icon>water_drop</Icon>}
           node="div"
         >
