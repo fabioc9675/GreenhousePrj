@@ -184,7 +184,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="teal lighten-5">
         {/** Navigation */}
         <nav className="light-blue darken-4">
           <div className="container">
@@ -194,7 +194,7 @@ class App extends Component {
           </div>
         </nav>
 
-        <div className="container">
+        <div className="container ">
           <DatePicker
             label="Fecha de observación"
             id="dateSelector"
@@ -232,6 +232,7 @@ class App extends Component {
             data={this.state.lastGreenhouse}
             data2Chart={this.state.greenhouses}
             dateUpdate={this.state.dateComp}
+            color="white"
           />
         </div>
 
@@ -275,7 +276,7 @@ class App extends Component {
             Antioquia
           </p>
           <p className="grey-text text-lighten-4">
-            Contactanos:{" "}
+            Contáctanos:{" "}
             <a href="mailto:fabian.castano@udea.edu.co?Subject=[Proyecto%20Invernadero]">
               <MdEmail size="2em" color="#FFFFFF" />
             </a>{" "}

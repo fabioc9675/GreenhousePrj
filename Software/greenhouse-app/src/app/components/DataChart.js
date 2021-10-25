@@ -40,7 +40,7 @@ function DataChart(props) {
 
   return (
     <div className="col">
-      <div className="container">{`Fecha de consulta = ${date}`}</div>
+      <div className="container">{`Fecha de observación = ${date}`}</div>
       <ResponsiveContainer width="100%" height="100%" aspect={4.5}>
         <AreaChart
           width={900}

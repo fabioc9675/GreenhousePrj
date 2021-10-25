@@ -4,7 +4,7 @@ function DataTable(props) {
   // definition of props to use i the component
   const { data } = props;
   return (
-    <div className="container">
+    <div className="container grey lighten-5">
       <table className="responsive-table striped centered">
         <thead>
           <tr>
