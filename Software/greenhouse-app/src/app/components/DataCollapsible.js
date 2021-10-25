@@ -3,11 +3,13 @@ import { Collapsible, CollapsibleItem, Icon } from "react-materialize";
 import DataChart from "./DataChart";
 
 function DataCollapsible(props) {
-  const { data, data2Chart, dateUpdate } = props;
+  const { data, data2Chart, dateUpdate, color } = props;
   return (
-    <div className="container">
+    <div className="container ">
+      <h4>Gráficos de datos ({dateUpdate}): </h4>
       <Collapsible accordion={false} popout>
         <CollapsibleItem
+          className={color}
           expanded={false}
           header={`Última temperatura ambiente = ${data.temp_env} ºC`}
           icon={<Icon>thermostat</Icon>}
@@ -19,10 +21,11 @@ function DataCollapsible(props) {
             yDataKey="temp_env"
             date={dateUpdate}
             unit="ºC"
-            color="#f44336"
+            color="#f06292"
           />
         </CollapsibleItem>
         <CollapsibleItem
+          className={color}
           expanded={false}
           header={`Última humedad relativa ambiente = ${data.mois_env} %`}
           icon={<Icon>filter_drama</Icon>}
@@ -38,6 +41,7 @@ function DataCollapsible(props) {
           />
         </CollapsibleItem>
         <CollapsibleItem
+          className={color}
           expanded={false}
           header={`Última radición Solar = ${data.radi_env} `}
           icon={<Icon>light_mode</Icon>}
@@ -53,6 +57,7 @@ function DataCollapsible(props) {
           />
         </CollapsibleItem>
         <CollapsibleItem
+          className={color}
           expanded={false}
           header={`Última Temperatura Suelo 1 = ${data.temp_earth_1} ºC`}
           icon={<Icon>grass</Icon>}
@@ -68,6 +73,7 @@ function DataCollapsible(props) {
           />
         </CollapsibleItem>
         <CollapsibleItem
+          className={color}
           expanded={false}
           header={`Última humedad Suelo 1 = ${data.humi_earth_1} %`}
           icon={<Icon>water_drop</Icon>}

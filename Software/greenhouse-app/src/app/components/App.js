@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { io } from "socket.io-client";
-import { DatePicker } from "react-materialize";
+import { Caption, DatePicker, Footer, Slide, Slider } from "react-materialize";
 import moment from "moment";
+import { FaGithubSquare, FaYoutubeSquare } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 // import data of configuration
 import dataConfig from "../../dataConfig/dataConfig.json";
 import DataTable from "./DataTable";
 import DataCollapsible from "./DataCollapsible";
+
+import { version } from "../../dataConfig/autobuild_version";
+
+const udeaLogo = "resources/logos/UdeALogo.png";
+const instLogo = "resources/logos/IELaPaz.png";
 
 class App extends Component {
   constructor() {
@@ -180,17 +187,36 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          backgroundImage: `url("/resources/photos/Foto_03_t.png")`,
+          height: "100%",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         {/** Navigation */}
         <nav className="light-blue darken-4">
-          <div className="container">
+          <div className="container" style={{ height: "100px" }}>
             <a className="brand-logo" href="/">
               Proyecto Invernadero, {this.state.instName}
+            </a>
+
+            <a
+              className="grey-text text-lighten-4 right"
+              href="https://www.institucioneducativalapaz.edu.co/index.php"
+              target="_blank"
+            >
+              <img height="100px" src={instLogo} alt="" />
             </a>
           </div>
         </nav>
 
-        <div className="container">
+        <div style={{ height: "50px" }} />
+
+        <div className="container ">
           <DatePicker
             label="Fecha de observación"
             id="dateSelector"
@@ -228,12 +254,104 @@ class App extends Component {
             data={this.state.lastGreenhouse}
             data2Chart={this.state.greenhouses}
             dateUpdate={this.state.dateComp}
+            color="white"
+          />
+        </div>
+        <div className="container blue-grey darken-4 center">
+          <Slider
+            fullscreen={false}
+            options={{
+              duration: 1000,
+              height: 400,
+              indicators: true,
+              interval: 6000,
+            }}
+          >
+            <Slide image={<img alt="" src="resources/photos/Foto_01.png" />}>
+              <Caption placement="left">
+                <h3>Nuestra huerta Inteligente</h3>
+                <h5 className="white black-text">
+                  Acercamos las capacidades de la industria 4.0 a los niños.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_02.jpg" />}>
+              <Caption placement="right">
+                <h3>Nuestros pequeños científicos</h3>
+                <h5 className="white black-text">
+                  Fortalecemos en los niños su capacidad de investigación e
+                  innovación.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_03.jpg" />}>
+              <Caption placement="center">
+                <h3>Esta es nuestra motivación</h3>
+                <h5 className="white black-text">
+                  Fomentar el desarrollo tecnológico del país.
+                </h5>
+              </Caption>
+            </Slide>
+          </Slider>
+        </div>
+        <div>
+          <DataTable
+            data={this.state.greenhouses}
+            dateUpdate={this.state.dateComp}
           />
         </div>
 
-        <div>
-          <DataTable data={this.state.greenhouses} />
-        </div>
+        <Footer
+          className="green darken-4"
+          copyrights="Powered by: Instituto de Física"
+          moreLinks={
+            <div>
+              <a
+                className="grey-text text-lighten-4"
+                href="https://github.com/fabioc9675"
+                target="_blank"
+              >
+                <FaGithubSquare size="3em" />
+              </a>
+              <a
+                className="grey-text text-lighten-4"
+                href="https://www.youtube.com/channel/UCWdd0P8N_Ug6H5iSZgOykQg"
+                target="_blank"
+              >
+                <FaYoutubeSquare size="3em" />
+              </a>
+
+              <a
+                className="grey-text text-lighten-4 right"
+                href="https://www.udea.edu.co"
+                target="_blank"
+              >
+                <img width="200px" src={udeaLogo} alt="" />
+              </a>
+              <div
+                style={{
+                  paddingTop: "1rem",
+                  paddingLeft: "50%",
+                  fontSize: "0.8rem",
+                }}
+              >
+                Versión: {version}
+              </div>
+            </div>
+          }
+        >
+          <h5 className="white-text">Proyecto Invernadero</h5>
+          <p className="grey-text text-lighten-4">
+            Proyecto apoyado por el instituto de física de la Universidad de
+            Antioquia
+          </p>
+          <p className="grey-text text-lighten-4">
+            Contáctanos:{" "}
+            <a href="mailto:fabian.castano@udea.edu.co?Subject=[Proyecto%20Invernadero]">
+              <MdEmail size="2em" color="#FFFFFF" />
+            </a>{" "}
+          </p>
+        </Footer>
       </div>
     );
   }
