@@ -10,6 +10,8 @@ import dataConfig from "../../dataConfig/dataConfig.json";
 import DataTable from "./DataTable";
 import DataCollapsible from "./DataCollapsible";
 
+import { version } from "../../dataConfig/autobuild_version";
+
 const udeaLogo = "resources/logos/UdeALogo.png";
 const instLogo = "resources/logos/IELaPaz.png";
 
@@ -301,6 +303,15 @@ class App extends Component {
               >
                 <img width="200px" src={udeaLogo} alt="" />
               </a>
+              <div
+                style={{
+                  paddingTop: "1rem",
+                  paddingLeft: "50%",
+                  fontSize: "0.8rem",
+                }}
+              >
+                Versión: {version}
+              </div>
             </div>
           }
         >
