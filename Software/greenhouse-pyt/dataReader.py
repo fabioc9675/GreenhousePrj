@@ -86,7 +86,7 @@ def main():
             # print(result['temp_earth'])
 
             # Wait 5 seconds between samples
-            time.sleep(60)
+            time.sleep(3600)
 
     except error:
         print("Port not found")
