@@ -283,7 +283,7 @@ class App extends Component {
             </Slide>
             <Slide image={<img alt="" src="resources/photos/Foto_02.jpg" />}>
               <Caption placement="right">
-                <h3>Nuestros pequeños científicos</h3>
+                <h3>Nuestros científicos de datos</h3>
                 <h5 className="white black-text">
                   Fortalecemos en los niños su capacidad de investigación e
                   innovación.
@@ -295,6 +295,30 @@ class App extends Component {
                 <h3>Esta es nuestra motivación</h3>
                 <h5 className="white black-text">
                   Fomentar el desarrollo tecnológico del país.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_04.jpg" />}>
+              <Caption placement="center">
+                <h3>La huerta 4.0</h3>
+                <h5 className="white black-text">
+                  Autosostenibilidad alimentaria en la escuela y en el hogar.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_05.jpg" />}>
+              <Caption placement="left">
+                <h3>Grupo Green Garden</h3>
+                <h5 className="white black-text">
+                  Comunidad científica de niños con tecnologías 4.0.
+                </h5>
+              </Caption>
+            </Slide>
+            <Slide image={<img alt="" src="resources/photos/Foto_06.jpg" />}>
+              <Caption placement="right">
+                <h3>Uso consciente de la energía</h3>
+                <h5 className="white black-text">
+                  Desinfección del suelo de la huerta con la radiación solar.
                 </h5>
               </Caption>
             </Slide>
