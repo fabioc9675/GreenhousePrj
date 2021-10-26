@@ -13,7 +13,6 @@ import DataCollapsible from "./DataCollapsible";
 import { version } from "../../dataConfig/autobuild_version";
 
 const udeaLogo = "resources/logos/UdeALogo.png";
-const instLogo = "resources/logos/IELaPaz.png";
 
 class App extends Component {
   constructor() {
@@ -31,6 +30,10 @@ class App extends Component {
     this.state = {
       institution: dataConfig.institution, // load institute environment variable
       instName: dataConfig.institutionName, // load institution name
+      title: dataConfig.title, // app title
+      instLogo: dataConfig.instLogo, // institution logo
+      instURL: dataConfig.instURL, // institution URL
+      footNote: dataConfig.footNote, // Personalized footnote
       greenhouses: [], // load Greenhouse data payload from database
       dateInit: dateInit, // calculate data between
       dateEnd: dateEnd,
@@ -201,23 +204,26 @@ class App extends Component {
         <nav className="light-blue darken-4">
           <div className="container" style={{ height: "100px" }}>
             <a className="brand-logo" href="/">
-              Proyecto Invernadero, {this.state.instName}
+              {this.state.title}
             </a>
 
             <a
               className="grey-text text-lighten-4 right"
-              href="https://www.institucioneducativalapaz.edu.co/index.php"
+              href={this.state.instURL}
               target="_blank"
             >
-              <img height="100px" src={instLogo} alt="" />
+              <img height="100px" src={this.state.instLogo} alt="" />
             </a>
           </div>
         </nav>
 
-        <div style={{ height: "50px" }} />
+        <div className=" blue-grey darken-4 center">
+          <img alt="" src="resources/photos/MainFrame.jpg" width="100%" />
+        </div>
 
         <div className="container ">
           <DatePicker
+            style={{ fontSize: "1.5rem" }}
             label="Fecha de observación"
             id="dateSelector"
             onChange={(newDate) => {
@@ -304,6 +310,30 @@ class App extends Component {
         <Footer
           className="green darken-4"
           copyrights="Powered by: Instituto de Física"
+          links={
+            <div className="col s12">
+              <p className="grey-text text-lighten-4">Apoyan:</p>
+              <img
+                src="/resources/logos/logo_e1.png"
+                alt=""
+                width="33%"
+                style={{ padding: "10px" }}
+              />
+              <img
+                src="/resources/logos/logo_e2.png"
+                alt=""
+                width="33%"
+                style={{ padding: "10px" }}
+              />
+              <img
+                src="/resources/logos/logo_e3.png"
+                alt=""
+                width="33%"
+                style={{ padding: "10px" }}
+              />
+              <img src="/resources/logos/logo_e4.png" alt="" width="100%" />
+            </div>
+          }
           moreLinks={
             <div>
               <a
@@ -340,11 +370,8 @@ class App extends Component {
             </div>
           }
         >
-          <h5 className="white-text">Proyecto Invernadero</h5>
-          <p className="grey-text text-lighten-4">
-            Proyecto apoyado por el instituto de física de la Universidad de
-            Antioquia
-          </p>
+          <h5 className="white-text">{this.state.title}</h5>
+          <p className="grey-text text-lighten-4">{this.state.footNote}</p>
           <p className="grey-text text-lighten-4">
             Contáctanos:{" "}
             <a href="mailto:fabian.castano@udea.edu.co?Subject=[Proyecto%20Invernadero]">
