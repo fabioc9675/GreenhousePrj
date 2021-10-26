@@ -380,7 +380,7 @@ class App extends Component {
                 href="https://www.udea.edu.co"
                 target="_blank"
               >
-                <img width="200px" src={udeaLogo} alt="" />
+                <img width="300px" src={udeaLogo} alt="" />
               </a>
               <div
                 style={{
