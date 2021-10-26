@@ -14,7 +14,7 @@ function DataTable(props) {
               <th>Hora</th>
               <th>Temperatura Ambiente</th>
               <th>Humedad Ambiente</th>
-              <th>Radición Solar</th>
+              <th>Radiación Solar</th>
               <th>Temperatura Suelo 1</th>
               {/*<th>Temp. Sue. 2</th>*/}
               {/*<th>Temp. Sue. 3</th>*/}
