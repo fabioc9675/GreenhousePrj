@@ -355,7 +355,18 @@ class App extends Component {
                 width="33%"
                 style={{ padding: "10px" }}
               />
-              <img src="/resources/logos/logo_e4.png" alt="" width="100%" />
+              <img
+                src="/resources/logos/logo_e4.png"
+                alt=""
+                width="100%"
+                style={{ padding: "10px" }}
+              />
+              <img
+                src="/resources/logos/logo_e5.png"
+                alt=""
+                width="100%"
+                style={{ padding: "10px" }}
+              />
             </div>
           }
           moreLinks={
