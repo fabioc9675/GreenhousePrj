@@ -68,7 +68,8 @@ DHT dht(DHTPIN, DHT22);
 OneWire oneWire(ONE_WIRE_BUS); // 1-Wire bus
 DallasTemperature sensors(&oneWire);
 
-int sensorPin = A0; //Analog reading
+int sensorPin1 = A0; //Analog reading 1, soil humidity
+int sensorPin2 = A1; //Analog reading 2, light radiation 
 
 /* ********************************************************************
  * **** PROTOTYPES 

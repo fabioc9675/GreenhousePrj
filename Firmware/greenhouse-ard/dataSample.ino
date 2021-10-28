@@ -42,6 +42,11 @@ extern float humi_e4_val;
 /* ********************************************************************
  * **** FUNCTIONS 
  * ********************************************************************/
+float radiation(){
+    float sensorValue = (1023.0 - analogRead(sensorPin2))/100.0;
+    return 0.00574751 * pow(sensorValue, 6.737) + 231;
+}
+
 void dataRandGenerator(void)
 {
 
@@ -49,12 +54,12 @@ void dataRandGenerator(void)
     // Create real and random data
     temp_env_val = dht.readTemperature();       //Air temperature
     mois_env_val = dht.readHumidity();           //Air humidity
-    radi_env_val = random(1000, 2500) / 100.0;
+    radi_env_val = radiation();
     temp_e1_val = sensors.getTempCByIndex(0);   //Soil temperature
     temp_e2_val = random(2000, 3500) / 100.0;
     temp_e3_val = random(2000, 3500) / 100.0;
     temp_e4_val = random(2000, 3500) / 100.0;
-    humi_e1_val = analogRead(sensorPin);        //Soil humidity
+    humi_e1_val = (1024.0-analogRead(sensorPin1))/1.0;        //Soil humidity
     humi_e2_val = random(4000, 9000) / 100.0;
     humi_e3_val = random(4000, 9000) / 100.0;
     humi_e4_val = random(4000, 9000) / 100.0;
