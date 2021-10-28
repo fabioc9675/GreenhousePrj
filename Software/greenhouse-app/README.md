@@ -45,6 +45,14 @@ It is necessary to add JSON Web Token to guarant that the res api is just access
 
 Example with socketio https://github.com/JackZheng10/Thought-Wall.git
 
+## Creation of visit counter
+
+Use the api counter api,
+
+- Create the visit counter api: `https://api.countapi.xyz/create?namespace=jfk-school&key=greenhouse&value=0`
+- Get the visit counter api: `https://api.countapi.xyz/get/jfk-school/greenhouse`
+- To update visit counter api: `https://api.countapi.xyz/update/jfk-school/greenhouse?amount=1`
+
 ## Local Database
 
 ### Initialization

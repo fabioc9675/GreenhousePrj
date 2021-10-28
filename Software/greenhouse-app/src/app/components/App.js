@@ -40,6 +40,7 @@ class App extends Component {
       dateComp: "", // data to load current day
       availableDates: [], // Available dates in database
       lastGreenhouse: {}, // real time acquisition and show
+      visitCount: 0, // visit counter
     };
 
     // Associate events with the component
@@ -65,6 +66,8 @@ class App extends Component {
     this.fetchGreenhousebyDate(this.state.dateInit, this.state.dateEnd); // data by date
     this.fetchLastGreenhouse(); // last data in database
 
+    // Update visit count
+    this.updateVisitCount();
     // set time interval for someting usefull
     // this.timer = setInterval(() => {
     //   console.log("launch interval");
@@ -75,6 +78,18 @@ class App extends Component {
   componentWillUnmount() {
     // clear time interval
     // clearInterval(this.timer);
+  }
+
+  // Update visit count to the web page
+  updateVisitCount() {
+    fetch(
+      "https://api.countapi.xyz/update/jfk-school/greenhouse?amount=1"
+    ).then((res) =>
+      res.json().then((res) => {
+        this.setState({ visitCount: res.value });
+        console.log(this.state.visitCount);
+      })
+    );
   }
 
   // function to make a query to DataBase
@@ -405,7 +420,7 @@ class App extends Component {
             </div>
           }
         >
-          <h5 className="white-text">{this.state.title}</h5>
+          <h3 className="white-text">{this.state.title}</h3>
           <p className="grey-text text-lighten-4">{this.state.footNote}</p>
           <p className="grey-text text-lighten-4">
             Contáctanos:{" "}
@@ -413,6 +428,9 @@ class App extends Component {
               <MdEmail size="2em" color="#FFFFFF" />
             </a>{" "}
           </p>
+          <h5 className="grey-text text-lighten-4">
+            Nos han visitado <b>{this.state.visitCount}</b> veces
+          </h5>
         </Footer>
       </div>
     );
