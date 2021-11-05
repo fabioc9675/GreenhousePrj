@@ -45,16 +45,26 @@ extern float humi_e4_val;
 float radiation(){
     static int current = 0;
     static float vec_light[3] = {0.0, 0.0, 0.0};
-    float sum;
+    static bool flag = true;
+    float res;
 
     float sensorValue = (1023.0 - analogRead(sensorPin2))/100.0;
 
-    vec_light[current] = 0.0018323 * pow(sensorValue, 7.23709) + 103*sensorValue;
-    sum = vec_light[0] + vec_light[1] + vec_light[2];
+    sensorValue = 0.0018323 * pow(sensorValue, 7.23709) + 103*sensorValue;
+
+    if (flag){
+      flag = false;
+      vec_light[0] = sensorValue;
+      vec_light[1] = sensorValue;
+      vec_light[2] = sensorValue;
+    }
+
+    vec_light[current] = sensorValue;
+    res = (vec_light[0] + vec_light[1] + vec_light[2])/3.0;
 
     current++;
     current = current % 3;
-    return sum/3.0;
+    return res;
 }
 
 void dataRandGenerator(void)

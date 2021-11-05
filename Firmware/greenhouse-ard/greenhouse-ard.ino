@@ -59,7 +59,7 @@ float humi_e4_val;
 bool LED_STATE2 = true;
 
 // flag to take a sample
-int contSample = 0;
+int contSample = SECONDS_TO_SAMPLE-1;
 int contLed = 0;
 volatile uint8_t flagSample = false;
 
