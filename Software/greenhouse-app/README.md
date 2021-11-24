@@ -55,6 +55,11 @@ Use the api counter api,
 
 ## Local Database
 
+### Run ReplicaSet
+
+- `sudo systemctl stop mongod`
+- `sudo nohup mongod --dbpath ~/data/db --replSet replocal`
+
 ### Initialization
 
 - `sudo apt install mongodb`
