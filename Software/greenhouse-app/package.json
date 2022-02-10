@@ -6,11 +6,12 @@
   "author": "Fabian Castano",
   "license": "ISC",
   "scripts": {
+    "heroku-prebuild": "npm install --force",
     "start": "node src/index.js",
     "server": "nodemon src/index.js",
     "webpack": "webpack --mode development --watch",
     "dev": "concurrently \"npm run webpack \" \"npm run server\" ",
-    "build": "react-scripts build",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

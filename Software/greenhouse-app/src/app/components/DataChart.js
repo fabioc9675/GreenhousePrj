@@ -19,7 +19,7 @@ function DataChart(props) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        enable-background="new 0 0 24 24"
+        enableBackground="new 0 0 24 24"
         x={cx - 12}
         y={cy - 12}
         height="24px"
