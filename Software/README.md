@@ -4,6 +4,10 @@ Folder that contains the information related with software develop
 
 ## Software installation
 
+### HEROKU DEPLOYMENT
+
+follow the link [link][Heroku depoyment with Git]
+
 ### VISUAL STUDIO CODE
 
 follow the indications in the [link][install VsCode]
@@ -46,6 +50,7 @@ Commands:
 [install NodeJs][https://linuxize.com/post/how-to-install-node-js-on-raspberry-pi/]
 [install Mosquitto][https://stevessmarthomeguide.com/install-mosquitto-raspberry-pi/]
 [install MongoDB][https://www.mongodb.com/developer/how-to/mongodb-on-raspberry-pi/]
+[Heroku depoyment with Git][https://devcenter.heroku.com/articles/git]
 
 
 
