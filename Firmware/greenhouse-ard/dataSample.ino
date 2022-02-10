@@ -67,6 +67,22 @@ float radiation(){
     return res;
 }
 
+float air_quality(){
+  int quality = sensor.slope();
+  float air = 0.0;
+  if (quality == AirQualitySensor::FORCE_SIGNAL) {
+      air = 4.0;
+    } else if (quality == AirQualitySensor::HIGH_POLLUTION) {
+      air = 3.0;
+    } else if (quality == AirQualitySensor::LOW_POLLUTION) {
+      air = 2.0;
+    } else if (quality == AirQualitySensor::FRESH_AIR) {
+      air = 1.0;
+    }
+
+  return air;
+  }
+  
 void dataRandGenerator(void)
 {
 
@@ -79,7 +95,8 @@ void dataRandGenerator(void)
     temp_e2_val = random(2000, 3500) / 100.0;
     temp_e3_val = random(2000, 3500) / 100.0;
     temp_e4_val = random(2000, 3500) / 100.0;
-    humi_e1_val = (1024.0-analogRead(sensorPin1))/1.0;        //Soil humidity
+    //humi_e1_val = (1024.0-analogRead(sensorPin1))/1.0;        //Soil humidity
+    humi_e1_val = air_quality(); //Read air Quality
     humi_e2_val = random(4000, 9000) / 100.0;
     humi_e3_val = random(4000, 9000) / 100.0;
     humi_e4_val = random(4000, 9000) / 100.0;
