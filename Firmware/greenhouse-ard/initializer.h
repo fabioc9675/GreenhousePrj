@@ -25,8 +25,8 @@
 #define ALIVE_CMD 'a'
 
 // data sample constant
-#define TIME_TO_SEC 10      // need to count until 10 to rise a second
-#define SECONDS_TO_SAMPLE 2 // seconds to obtain a sample
+#define TIME_TO_SEC 1       // need to count until 10 to rise a second
+#define SECONDS_TO_SAMPLE 180 // seconds to obtain a sample
 #define SECONDS_TO_LED 1    // seconds to toogle led
 #define SAMPLE_PERIOD (TIME_TO_SEC * SECONDS_TO_SAMPLE)
 #define LED_PERIOD (TIME_TO_SEC * SECONDS_TO_LED)
