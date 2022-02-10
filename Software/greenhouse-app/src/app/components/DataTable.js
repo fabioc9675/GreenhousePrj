@@ -14,7 +14,7 @@ function DataTable(props) {
               <th>Hora</th>
               <th>Temperatura Ambiente</th>
               <th>Humedad Ambiente</th>
-              <th>Radición Solar</th>
+              <th>Radiación Solar</th>
               <th>Temperatura Suelo 1</th>
               {/*<th>Temp. Sue. 2</th>*/}
               {/*<th>Temp. Sue. 3</th>*/}
@@ -33,7 +33,7 @@ function DataTable(props) {
                   <td>{greenhouse.hour}</td>
                   <td>{greenhouse.temp_env} ºC</td>
                   <td>{greenhouse.mois_env} %</td>
-                  <td>{greenhouse.radi_env}</td>
+                  <td>{greenhouse.radi_env} lx</td>
                   <td>{greenhouse.temp_earth[0]} ºC</td>
                   {/*<td>{greenhouse.temp_earth[1]}</td>*/}
                   {/*<td>{greenhouse.temp_earth[2]}</td>*/}

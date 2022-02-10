@@ -15,10 +15,19 @@
 #include "timer.h"
 #include "dataSample.h"
 
+//Reading of air temperature and humidity
+#include <DHT.h>
+#include <stdio.h>
+
+//Reading soil temperature
+#include <OneWire.h> // incluir  1-Wire y Dallas Temperature
+#include <DallasTemperature.h> //  que son librerías
+
 /* ********************************************************************
  * **** DEFINES 
  * ********************************************************************/
-
+#define DHTPIN 4
+#define ONE_WIRE_BUS 2 // Use el pin # 2 para el bus
 /* ********************************************************************
  * **** VARIABLES 
  * ********************************************************************/
@@ -50,9 +59,17 @@ float humi_e4_val;
 bool LED_STATE2 = true;
 
 // flag to take a sample
-int contSample = 0;
+int contSample = SECONDS_TO_SAMPLE-1;
 int contLed = 0;
 volatile uint8_t flagSample = false;
+
+DHT dht(DHTPIN, DHT22);
+
+OneWire oneWire(ONE_WIRE_BUS); // 1-Wire bus
+DallasTemperature sensors(&oneWire);
+
+int sensorPin1 = A0; //Analog reading 1, soil humidity
+int sensorPin2 = A1; //Analog reading 2, light radiation 
 
 /* ********************************************************************
  * **** PROTOTYPES 
@@ -73,6 +90,9 @@ void setup(void)
     init_TextPayload();
 
     pinMode(LED_BUILTIN, OUTPUT);
+
+    dht.begin();
+    sensors.begin();
 }
 
 // loop function
@@ -142,8 +162,6 @@ void serialEvent(void)
 //With the settings above, this IRS will trigger each 100ms.
 ISR(TIMER1_COMPA_vect)
 {
-    TCNT1 = 0; //First, set the timer back to 0 so it resets for next interrupt
-
     contSample++;
     contLed++;
 

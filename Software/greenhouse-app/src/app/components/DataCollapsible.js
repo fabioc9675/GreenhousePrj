@@ -43,7 +43,7 @@ function DataCollapsible(props) {
         <CollapsibleItem
           className={color}
           expanded={false}
-          header={`Última radición Solar = ${data.radi_env} `}
+          header={`Última radiación Solar = ${data.radi_env} lx`}
           icon={<Icon>light_mode</Icon>}
           node="div"
         >
@@ -52,7 +52,7 @@ function DataCollapsible(props) {
             xDataKey="hour"
             yDataKey="radi_env"
             date={dateUpdate}
-            unit=""
+            unit=" lx"
             color="#3f51b5"
           />
         </CollapsibleItem>
