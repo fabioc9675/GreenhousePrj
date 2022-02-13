@@ -6,10 +6,7 @@ Folder that contains the information related with firmware develop
 
 ### ARDUINO IDE
 
-follow the indications in the [link][install Arduino]
-Official [Arduino][Arduino link] Web page
+follow the indications in the [install Arduino link](https://electropeak.com/learn/install-arduino-ide-on-raspberry-pi/)
+Official [Arduino link](https://www.arduino.cc/) Web page
 
 
-
-[install Arduino][https://electropeak.com/learn/install-arduino-ide-on-raspberry-pi/]
-[Arduino link][https://www.arduino.cc/]
