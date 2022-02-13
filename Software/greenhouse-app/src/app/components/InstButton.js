@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { Card, Row, Col, Icon, CardTitle } from "react-materialize";
 
 export default function InstButton(props) {
   // component props
-  const { buttonLabel, pathUrl, imgDir, title } = props;
+  const { buttonLabel, pathUrl, imgDir, title, textInfo } = props;
 
   // URL history
   const navigate = useNavigate();
@@ -16,14 +17,30 @@ export default function InstButton(props) {
   }
 
   return (
-    <div className="desc-pane" onClick={HandleClick}>
-      <div className="des-pane des-content">
-        <div className="des-pane des-title">{title}</div>
-        <hr className="desc-line" />
-      </div>
-      <button className="desc-pane desc-button">
-        <img className="des-pane desc-icon" src={imgDir} alt={buttonLabel} />
-      </button>
-    </div>
+    <Row>
+      <Col m={6} s={12}>
+        <Card
+          className="teal z-depth-3"
+          actions={[
+            <a
+              className="waves-effect waves-light btn-large white-text text-bold"
+              key="1"
+              onClick={HandleClick}
+            >
+              Ingrese a la huerta
+            </a>,
+          ]}
+          header={<CardTitle image={imgDir} width={100} />}
+          horizontal
+          revealIcon={<Icon>more_vert</Icon>}
+        >
+          <span className="card-title activator white-text text-bold ">
+            {title}
+          </span>
+          <hr className="white"></hr>
+          <p className="white-text">{textInfo}</p>
+        </Card>
+      </Col>
+    </Row>
   );
 }
