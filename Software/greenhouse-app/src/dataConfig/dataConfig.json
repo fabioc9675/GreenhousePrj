@@ -1,10 +1,22 @@
 {
-  "institution": "JFK",
-  "institutionName": "Institución Educativa La Paz",
-  "title": "Huerta 4.0, El Internet de la Huerta",
-  "city": "Envigado",
-  "partner": "Universidad de Antioquia",
-  "instLogo": "resources/logos/IELaPaz.png",
-  "instURL": "https://www.institucioneducativalapaz.edu.co/index.php",
-  "footNote": "Proyecto desarrollado por los docentes Yaneth Vides y Hernando Jaramillo de la institución educativa La Paz y apoyado por el Instituto de Física de la Universidad de Antioquia"
+  "Profile_JFK": {
+    "institution": "JFK",
+    "institutionName": "Institución Educativa La Paz",
+    "title": "Huerta 4.0, El Internet de la Huerta",
+    "city": "Envigado",
+    "partner": "Universidad de Antioquia",
+    "instLogo": "resources/logos/IELaPaz.png",
+    "instURL": "https://www.institucioneducativalapaz.edu.co/index.php",
+    "footNote": "Proyecto desarrollado por los docentes Yaneth Vides y Hernando Jaramillo de la institución educativa La Paz y apoyado por el Instituto de Física de la Universidad de Antioquia"
+  },
+  "Profile_UdeA": {
+    "institution": "UdeA",
+    "institutionName": "Universidad de Antioquia",
+    "title": "Huerta 4.0, El Internet de la Huerta",
+    "city": "Envigado",
+    "partner": "Universidad de Antioquia",
+    "instLogo": "resources/logos/UdeALogo.png",
+    "instURL": "https://www.institucioneducativalapaz.edu.co/index.php",
+    "footNote": "Proyecto desarrollado por los docentes Yaneth Vides y Hernando Jaramillo de la institución educativa La Paz y apoyado por el Instituto de Física de la Universidad de Antioquia"
+  }
 }
