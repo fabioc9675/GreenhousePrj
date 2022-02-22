@@ -17,11 +17,11 @@ db = client[MONGO_DB]  # connection with specific database
 collection = db[MONGO_COL]  # connection with specific collection
 
 # method to insert document into database
-# collection.insert_one({"institution": "JFK", "numHouse": 3, "temp_env": 25.0, "mois_env": 78, "radi_env": 19, "temp_earth": [24.3, 21.2, 23.3, 21.2], "humi_earth": [14, 17, 15, 18], "createdAt": datetime.datetime.utcnow(), "updatedAt": datetime.datetime.utcnow(), "__v": 0})
+collection.insert_one({"institution": "JFK", "numHouse": 1, "temp_env": 25.0, "mois_env": 78, "radi_env": 19, "temp_earth": [24.3, 21.2, 23.3, 21.2], "humi_earth": [14, 17, 15, 18], "createdAt": datetime.datetime.utcnow(), "updatedAt": datetime.datetime.utcnow(), "__v": 0})
 
 # method to find documents into database
 # results = collection.find()
-results = collection.find({"institution": "UdeA"})
+results = collection.find({"institution": "JFK"})
 for result in results:
     # print(result)
     print(result['temp_earth'])

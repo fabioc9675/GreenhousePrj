@@ -3,6 +3,7 @@ module.exports = {
   output: {
     path: __dirname + "/src/public",
     filename: "bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -12,5 +13,8 @@ module.exports = {
         exclude: /node_modules/,
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };

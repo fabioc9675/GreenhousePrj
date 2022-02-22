@@ -38,6 +38,7 @@ routes: contains routing between code
 - `npm install moment` use date time formater
 - `npm install --save materialize-social` Use of social icons
 - `npm install react-icons --save` Icons https://react-icons.github.io/react-icons/
+- `npm install react-router react-router-dom` to use router in Application
 
 Use of MaterializeCSS through CDN www.materializecss.com copy the CSS part into index.html, alse add the icons provided for materialize
 
