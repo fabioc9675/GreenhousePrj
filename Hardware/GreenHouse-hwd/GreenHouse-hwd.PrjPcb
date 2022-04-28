@@ -1130,9 +1130,13 @@ PartTypes=0
 
 [NetInfos]
 Net1=NetName=5V0|NetColor=$006E6EFF
-Net2=NetName=VIN|NetColor=$00FF6EFF
-Net3=NetName=3V3|NetColor=$006EFF6E
-Net4=NetName=GND|NetColor=$00FF6E6E
+Net2=NetName=HS_2|NetColor=$008E00C5
+Net3=NetName=HS_3|NetColor=$008E00C5
+Net4=NetName=VIN|NetColor=$00FF6EFF
+Net5=NetName=HS_4|NetColor=$008E00C5
+Net6=NetName=3V3|NetColor=$006EFF6E
+Net7=NetName=GND|NetColor=$00FF6E6E
+Net8=NetName=HS_1|NetColor=$008E00C5
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
