@@ -130,7 +130,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=2
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -147,7 +147,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=3
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -156,6 +156,23 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TKHFSJHI
+
+[Document8]
+DocumentPath=4-LightSensor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=4
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=FFIVPJRH
 
 [Configuration1]
 Name=Default Configuration
@@ -1134,9 +1151,10 @@ Net2=NetName=HS_2|NetColor=$008E00C5
 Net3=NetName=HS_3|NetColor=$008E00C5
 Net4=NetName=VIN|NetColor=$00FF6EFF
 Net5=NetName=HS_4|NetColor=$008E00C5
-Net6=NetName=3V3|NetColor=$006EFF6E
-Net7=NetName=GND|NetColor=$00FF6E6E
-Net8=NetName=HS_1|NetColor=$008E00C5
+Net6=NetName=LS_1|NetColor=$0000EEFF
+Net7=NetName=3V3|NetColor=$006EFF6E
+Net8=NetName=GND|NetColor=$00FF6E6E
+Net9=NetName=HS_1|NetColor=$008E00C5
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
