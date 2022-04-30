@@ -56,6 +56,23 @@ GenerateClassCluster=0
 DocumentUniqueId=WYGDUIIV
 
 [Document2]
+DocumentPath=2-Electrovalves.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=7
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=GISUGQRT
+
+[Document3]
 DocumentPath=..\Libraries\ArduinoR3Shield\ArduinoR3Shield.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -72,7 +89,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KAMRBAGL
 
-[Document3]
+[Document4]
 DocumentPath=..\Libraries\ArduinoR3Shield\ArduinoR3Shield.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -89,7 +106,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CXBPTPGB
 
-[Document4]
+[Document5]
 DocumentPath=0-Hierarchy.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -106,7 +123,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=BNJLYRCH
 
-[Document5]
+[Document6]
 DocumentPath=GreenHose-PCB.PcbDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -123,7 +140,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RQLBXXFU
 
-[Document6]
+[Document7]
 DocumentPath=2-Connector.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -140,7 +157,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JFAPXRAJ
 
-[Document7]
+[Document8]
 DocumentPath=3-HumiditySensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -157,7 +174,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TKHFSJHI
 
-[Document8]
+[Document9]
 DocumentPath=4-LightSensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -174,7 +191,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FFIVPJRH
 
-[Document9]
+[Document10]
 DocumentPath=5-ThermoHygroSensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -191,7 +208,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=APAGYEUG
 
-[Document10]
+[Document11]
 DocumentPath=6-AirQualitySensor.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -207,23 +224,6 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PAYWBFXS
-
-[Document11]
-DocumentPath=2-Electrovalves.SchDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=7
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=GISUGQRT
 
 [Document12]
 DocumentPath=7-WeightSensor.SchDoc
@@ -260,6 +260,40 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document14]
+DocumentPath=8-TemperatureSensor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=9
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=BHMIDAJP
+
+[Document15]
+DocumentPath=9-FlowSensor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=10
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=QICQLDHG
+
+[Document16]
 DocumentPath=1-Microcontroller.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1250,21 +1284,27 @@ PartTypes=0
 [NetInfos]
 Net1=NetName=NetC4_2|NetColor=$0001F1FD
 Net2=NetName=W_DOUT|NetColor=$00989BAA
-Net3=NetName=VIN|NetColor=$00FF6EFF
-Net4=NetName=HS_4|NetColor=$008E00C5
-Net5=NetName=LS_1|NetColor=$0001F1FD
-Net6=NetName=HS_3|NetColor=$008E00C5
-Net7=NetName=GND|NetColor=$00FF6E6E
-Net8=NetName=VALV_1|NetColor=$0074CAFF
-Net9=NetName=5V0|NetColor=$006E6EFF
-Net10=NetName=HS_2|NetColor=$008E00C5
-Net11=NetName=HS_1|NetColor=$008E00C5
-Net12=NetName=3V3|NetColor=$006EFF6E
-Net13=NetName=V_VALVE|NetColor=$008E0033
-Net14=NetName=W_SCK|NetColor=$00989BAA
-Net15=NetName=AQS_1|NetColor=$00AD7500
-Net16=NetName=VALV_2|NetColor=$0074CAFF
-Net17=NetName=THS_1|NetColor=$0089A829
+Net3=NetName=T_1W_1|NetColor=$009DCE82
+Net4=NetName=VIN|NetColor=$00FF6EFF
+Net5=NetName=T_1W_2|NetColor=$009DCE82
+Net6=NetName=HS_4|NetColor=$008E00C5
+Net7=NetName=LS_1|NetColor=$0001F1FD
+Net8=NetName=T_1W_3|NetColor=$009DCE82
+Net9=NetName=HS_3|NetColor=$008E00C5
+Net10=NetName=GND|NetColor=$00FF6E6E
+Net11=NetName=VALV_1|NetColor=$0074CAFF
+Net12=NetName=5V0|NetColor=$006E6EFF
+Net13=NetName=HS_2|NetColor=$008E00C5
+Net14=NetName=HS_1|NetColor=$008E00C5
+Net15=NetName=3V3|NetColor=$006EFF6E
+Net16=NetName=FS_1|NetColor=$009A72A6
+Net17=NetName=V_VALVE|NetColor=$008E0033
+Net18=NetName=W_SCK|NetColor=$00989BAA
+Net19=NetName=FS_2|NetColor=$009A72A6
+Net20=NetName=AQS_1|NetColor=$00AD7500
+Net21=NetName=VALV_2|NetColor=$0074CAFF
+Net22=NetName=THS_1|NetColor=$0089A829
+Net23=NetName=T_1W_4|NetColor=$009DCE82
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
