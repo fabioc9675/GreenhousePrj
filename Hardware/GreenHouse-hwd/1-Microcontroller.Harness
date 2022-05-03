@@ -1,1 +1,2 @@
+LedHarness=DATA_IN,CLK_SHIFT,CLK_LATCH,OUT_EN,M_RST
 Weight_Harness=W_DOUT,W_SCK
