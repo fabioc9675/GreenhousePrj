@@ -1,0 +1,74 @@
+{
+  "Profile_JFK": {
+    "institution": "JFK",
+    "institutionName": "Institución Educativa La Paz",
+    "title": "Huerta 4.0, El Internet de la Huerta",
+    "city": "Envigado",
+    "partner": "Universidad de Antioquia",
+    "instLogo": "resources/logos/IELaPaz.png",
+    "instURL": "https://www.institucioneducativalapaz.edu.co/index.php",
+    "footNote": "Proyecto desarrollado por los docentes Yaneth Vides y Hernando Jaramillo de la institución educativa La Paz y apoyado por el Instituto de Física de la Universidad de Antioquia",
+    "background": "resources/JFK/Background.png",
+    "mainCard": "resources/JFK/MainFrame.jpg",
+    "photoBook": [
+      "resources/JFK/Foto_01.png",
+      "resources/JFK/Foto_02.jpg",
+      "resources/JFK/Foto_03.jpg",
+      "resources/JFK/Foto_04.jpg",
+      "resources/JFK/Foto_05.jpg",
+      "resources/JFK/Foto_06.jpg"
+    ],
+    "photoTitle": [
+      "Nuestra huerta Inteligente",
+      "Nuestros científicos de datos",
+      "Esta es nuestra motivación",
+      "La huerta 4.0",
+      "Grupo Green Garden",
+      "Uso consciente de la energía"
+    ],
+    "photoText": [
+      "Acercamos las capacidades de la industria 4.0 a los niños.",
+      "Fortalecemos en los niños su capacidad de investigación e innovación.",
+      "Fomentar el desarrollo tecnológico del país.",
+      "Autosostenibilidad alimentaria en la escuela y en el hogar.",
+      "Comunidad científica de niños con tecnologías 4.0.",
+      "Desinfección del suelo de la huerta con la radiación solar."
+    ]
+  },
+  "Profile_UdeA": {
+    "institution": "UdeA",
+    "institutionName": "Universidad de Antioquia",
+    "title": "Huerta 4.0, El Internet de la Huerta",
+    "city": "Envigado",
+    "partner": "Universidad de Antioquia",
+    "instLogo": "resources/logos/UdeALogo.png",
+    "instURL": "https://www.institucioneducativalapaz.edu.co/index.php",
+    "footNote": "Proyecto desarrollado por los docentes Yaneth Vides y Hernando Jaramillo de la institución educativa La Paz y apoyado por el Instituto de Física de la Universidad de Antioquia",
+    "background": "resources/UdeA/Background.png",
+    "mainCard": "resources/UdeA/MainFrame.jpg",
+    "photoBook": [
+      "resources/UdeA/Foto_01.jpg",
+      "resources/UdeA/Foto_02.jpg",
+      "resources/UdeA/Foto_03.jpg",
+      "resources/UdeA/Foto_04.jpg",
+      "resources/UdeA/Foto_05.jpg",
+      "resources/UdeA/Foto_06.jpg"
+    ],
+    "photoTitle": [
+      "Nuestra huerta Inteligente",
+      "Nuestros científicos de datos",
+      "Esta es nuestra motivación",
+      "La huerta 4.0",
+      "Grupo Green Garden",
+      "Uso consciente de la energía"
+    ],
+    "photoText": [
+      "Acercamos las capacidades de la industria 4.0 a los niños.",
+      "Fortalecemos en los niños su capacidad de investigación e innovación.",
+      "Fomentar el desarrollo tecnológico del país.",
+      "Autosostenibilidad alimentaria en la escuela y en el hogar.",
+      "Comunidad científica de niños con tecnologías 4.0.",
+      "Desinfección del suelo de la huerta con la radiación solar."
+    ]
+  }
+}

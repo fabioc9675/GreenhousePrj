@@ -1,0 +1,50 @@
+{
+  "name": "greenhouse-app",
+  "version": "1.0.0",
+  "description": "## folders:",
+  "keywords": [],
+  "author": "Fabian Castano",
+  "license": "ISC",
+  "scripts": {
+    "heroku-prebuild": "npm install --force",
+    "start": "node src/index.js",
+    "server": "nodemon src/index.js",
+    "webpack": "webpack --mode development --watch",
+    "dev": "concurrently \"npm run webpack \" \"npm run server\" ",
+    "build": "webpack --mode production",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "axios": "^0.22.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.1.2",
+    "concurrently": "^6.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.9",
+    "morgan": "^1.10.0",
+    "plotly.js": "^2.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-materialize": "^3.9.9",
+    "react-plotly.js": "^2.5.1",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
+    "recharts": "^2.1.5",
+    "socket.io": "^4.3.0",
+    "socket.io-client": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "nodemon": "^2.0.13",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
