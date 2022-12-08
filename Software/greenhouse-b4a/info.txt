@@ -1,3 +1,0 @@
-MongoDB:
-    user: fabcastan
-    pass: fF5HlpTSyUMJgbar

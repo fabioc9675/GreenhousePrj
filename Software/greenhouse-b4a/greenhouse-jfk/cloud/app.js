@@ -1,28 +1,53 @@
 const express = require("express");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const path = require("path");
-const app = express(); // server
-const cors = require("cors");
+// const app = express(); // server
+// const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config();
+// require("dotenv").config();
 
 // Database connection
 // const { mongoose } = require("./database/database");
 
+const bodyParser = require("body-parser");
+
+app.set("dataConfig", __dirname + "/dataConfig");
+app.set("models", __dirname + "/models");
+app.set("routes", __dirname + "/routes");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // URI connection
-const URI = process.env.REACT_APP_URI; // environment variable
-const port = process.env.PORT || 3000;
+const URI =
+  "mongodb+srv://fabcastan:fF5HlpTSyUMJgbar@cluster0.7lwrz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; // environment variable
+// const port = process.env.PORT || 3000;
 const connection = mongoose.connection;
-const server = require("http").createServer(app);
-const io = require("socket.io")(server);
+const server = require("https").createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
+//app.set("io", io);
 
 // Settings
-app.set("port", port); // takes the port provided for the server or other
+// app.set("port", port); // takes the port provided for the server or other
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin.X-Requested-With, Content-Type, Accept"
+  );
+  console.log("Fabian Castano");
+  next();
+});
 
 // Middlewares
-app.use(morgan("dev")); // creates a log for clients that request access to the app
+// app.use(morgan("dev")); // creates a log for clients that request access to the app
 app.use(express.json()); // every data that arrives to the server enters to this and it verifies if the data is a json
-app.use(cors());
+// app.use(cors());
 
 // Routes
 app.use("/api/greenhouse", require("./routes/greenhouse.routes")); // adding prefix to the route
@@ -32,6 +57,7 @@ app.use("/api/greenhouse", require("./routes/greenhouse.routes")); // adding pre
 app.use(express.static(path.join(__dirname, "public"))); // adding prefix to the route
 
 // connect to the database
+mongoose.set("strictQuery", true);
 mongoose
   .connect(URI) // create connection to mongodb database
   .then((db) => console.log("Database is connected"))
@@ -47,9 +73,9 @@ io.on("connection", (socket) => {
 });
 
 // Starting the server
-server.listen(app.get("port"), () => {
-  console.log(`Server on port ${app.get("port")}`);
-});
+// server.listen(app.get("port"), () => {
+//   console.log(`Server on port ${app.get("port")}`);
+// });
 
 // initialization of collection watch
 connection.once("open", () => {

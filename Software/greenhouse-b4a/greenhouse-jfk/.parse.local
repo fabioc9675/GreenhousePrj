@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "greenhouse-jfk"
+    },
+    "greenhouse-jfk": {
+      "applicationId": "tnyQMBlDj5JIJRjODCsyzkxweC48gdf5UAQEIkon"
+    }
+  }
+}
