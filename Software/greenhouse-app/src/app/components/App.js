@@ -13,12 +13,14 @@ export default function App() {
       <div>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route
+              exact
               path="/udea"
               element={<MainFrame dataConfig={dataConfig.Profile_UdeA} />}
             />
             <Route
+              exact
               path="/jfk"
               element={<MainFrame dataConfig={dataConfig.Profile_JFK} />}
             />

@@ -35,6 +35,11 @@ class MainFrame extends Component {
       instLogo: dataConfig.instLogo, // institution logo
       instURL: dataConfig.instURL, // institution URL
       footNote: dataConfig.footNote, // Personalized footnote
+      background: dataConfig.background, // Web page background
+      mainCard: dataConfig.mainCard, // Main card
+      photoBook: dataConfig.photoBook, // photo book information
+      photoTitle: dataConfig.photoTitle,
+      photoText: dataConfig.photoText,
       greenhouses: [], // load Greenhouse data payload from database
       dateInit: dateInit, // calculate data between
       dateEnd: dateEnd,
@@ -74,11 +79,13 @@ class MainFrame extends Component {
     //   console.log("launch interval");
     //   // this.fetchTask();
     // }, 10000);
+    console.log("Mounted");
   }
 
   componentWillUnmount() {
     // clear time interval
     // clearInterval(this.timer);
+    console.log("Unmounted");
   }
 
   // Update visit count to the web page
@@ -208,7 +215,7 @@ class MainFrame extends Component {
     return (
       <div
         style={{
-          backgroundImage: `url("/resources/photos/Foto_03_t.png")`,
+          backgroundImage: `url("${this.state.background}")`,
           height: "100%",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
@@ -234,7 +241,7 @@ class MainFrame extends Component {
         </nav>
 
         <div className=" blue-grey darken-4 center">
-          <img alt="" src="resources/photos/MainFrame.jpg" width="100%" />
+          <img alt="" src={this.state.mainCard} width="100%" />
         </div>
 
         <div className="container ">
@@ -289,53 +296,40 @@ class MainFrame extends Component {
               interval: 6000,
             }}
           >
-            <Slide image={<img alt="" src="resources/photos/Foto_01.png" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[0]} />}>
               <Caption placement="left">
-                <h3>Nuestra huerta Inteligente</h3>
-                <h5 className="white black-text">
-                  Acercamos las capacidades de la industria 4.0 a los niños.
-                </h5>
+                <h3>{this.state.photoTitle[0]}</h3>
+                <h5 className="white black-text">{this.state.photoText[0]}</h5>
               </Caption>
             </Slide>
-            <Slide image={<img alt="" src="resources/photos/Foto_02.jpg" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[1]} />}>
               <Caption placement="right">
-                <h3>Nuestros científicos de datos</h3>
-                <h5 className="white black-text">
-                  Fortalecemos en los niños su capacidad de investigación e
-                  innovación.
-                </h5>
+                <h3>{this.state.photoTitle[1]}</h3>
+                <h5 className="white black-text">{this.state.photoText[1]}</h5>
               </Caption>
             </Slide>
-            <Slide image={<img alt="" src="resources/photos/Foto_03.jpg" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[2]} />}>
               <Caption placement="center">
-                <h3>Esta es nuestra motivación</h3>
-                <h5 className="white black-text">
-                  Fomentar el desarrollo tecnológico del país.
-                </h5>
+                <h3>{this.state.photoTitle[2]}</h3>
+                <h5 className="white black-text">{this.state.photoText[2]}</h5>
               </Caption>
             </Slide>
-            <Slide image={<img alt="" src="resources/photos/Foto_04.jpg" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[3]} />}>
               <Caption placement="center">
-                <h3>La huerta 4.0</h3>
-                <h5 className="white black-text">
-                  Autosostenibilidad alimentaria en la escuela y en el hogar.
-                </h5>
+                <h3>{this.state.photoTitle[3]}</h3>
+                <h5 className="white black-text">{this.state.photoText[3]}</h5>
               </Caption>
             </Slide>
-            <Slide image={<img alt="" src="resources/photos/Foto_05.jpg" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[4]} />}>
               <Caption placement="left">
-                <h3>Grupo Green Garden</h3>
-                <h5 className="white black-text">
-                  Comunidad científica de niños con tecnologías 4.0.
-                </h5>
+                <h3>{this.state.photoTitle[4]}</h3>
+                <h5 className="white black-text">{this.state.photoText[4]}</h5>
               </Caption>
             </Slide>
-            <Slide image={<img alt="" src="resources/photos/Foto_06.jpg" />}>
+            <Slide image={<img alt="" src={this.state.photoBook[5]} />}>
               <Caption placement="right">
-                <h3>Uso consciente de la energía</h3>
-                <h5 className="white black-text">
-                  Desinfección del suelo de la huerta con la radiación solar.
-                </h5>
+                <h3>{this.state.photoTitle[5]}</h3>
+                <h5 className="white black-text">{this.state.photoText[5]}</h5>
               </Caption>
             </Slide>
           </Slider>

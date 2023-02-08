@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 from os import error
 
@@ -78,9 +80,10 @@ def main():
             # print(result['temp_earth'])
 
             # Wait 5 seconds between samples
-            time.sleep(300)
+            time.sleep(3600)
 
-    except error:
+    except Exception as error:
+        print(error)
         print("Port not found")
 
     except KeyboardInterrupt:
@@ -88,7 +91,8 @@ def main():
         dev.close()
 
     finally:
-        sys.exit(0)
+        print("Trying again")
+	sys.exit(0)
 
 
 if __name__ == '__main__':

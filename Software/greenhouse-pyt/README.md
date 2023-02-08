@@ -31,3 +31,9 @@ use `kill -9 "process"`
 - `ps ax | grep dataReader.py` to see the process
 
 Use `sudo chmod 777 ttyACM0` to give permissions to the device to connect through USB USART
+
+## Camera Use
+
+- `pip install -U numpy` to install bumpy library
+- `sudo apt-get install libatlas-base-dev` to install libcblast library
+
