@@ -1,0 +1,3 @@
+[submodule "Software/Greenhouse_b4a"]
+	path = Software/Greenhouse_b4a
+	url = https://github.com/fabioc9675/Greenhouse_b4a.git
