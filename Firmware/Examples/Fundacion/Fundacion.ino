@@ -143,7 +143,7 @@ void serialEvent(void)
         {
         case READ_CMD:
             /* code */
-            //dataRandGenerator();
+            dataRandGenerator();
             // compose the data
 
             temp_env = String(temp_env_val, 1);
