@@ -7,13 +7,21 @@
  ************************************************************/
 
 /* ********************************************************************
- * **** INCLUDES 
+ * **** INCLUDES
  * ********************************************************************/
 #include <Arduino.h>
 
 #include "initializer.h"
 #include "timer.h"
 #include "dataSample.h"
+#include <ShiftRegister74HC595.h>
+
+// create a global shift register object
+// parameters: <number of shift registers> (data pin, clock pin, latch pin)
+ShiftRegister74HC595<2> sr(30, 31, 32);
+
+int oe = 33;
+int rst = 34;
 
 //Reading of air temperature and humidity
 #include <DHT.h>
@@ -24,12 +32,13 @@
 #include <DallasTemperature.h> //  que son librerías
 
 /* ********************************************************************
- * **** DEFINES 
+ * **** DEFINES
  * ********************************************************************/
 #define DHTPIN 4
 #define ONE_WIRE_BUS 2 // Use el pin # 2 para el bus
+#define ONE_WIRE_BUS_2 3 // Use el pin # 2 para el bus
 /* ********************************************************************
- * **** VARIABLES 
+ * **** VARIABLES
  * ********************************************************************/
 // Variables to acquire the parameters of the greenhouse
 String institution;
@@ -61,22 +70,26 @@ bool LED_STATE2 = true;
 // flag to take a sample
 int contSample = SECONDS_TO_SAMPLE-1;
 int contLed = 0;
+int con = 0;
 volatile uint8_t flagSample = false;
 
-DHT dht(DHTPIN, DHT22);
+DHT dht(DHTPIN, DHT11);
 
 OneWire oneWire(ONE_WIRE_BUS); // 1-Wire bus
+OneWire oneWire_2(ONE_WIRE_BUS_2); // 1-Wire bus
 DallasTemperature sensors(&oneWire);
+DallasTemperature sensor2(&oneWire_2);
 
 int sensorPin1 = A0; //Analog reading 1, soil humidity
-int sensorPin2 = A1; //Analog reading 2, light radiation 
+int sensorPin2 = A2; //Analog reading 2, light radiation
+int sensorPin3 = A6; //Analog reading 2, soil humidity
 
 /* ********************************************************************
- * **** PROTOTYPES 
+ * **** PROTOTYPES
  * ********************************************************************/
 
 /* ********************************************************************
- * **** FUNCTIONS 
+ * **** FUNCTIONS
  * ********************************************************************/
 
 // Setup function
@@ -86,6 +99,12 @@ void setup(void)
 {
     Serial.begin(115200);
 
+    pinMode(oe, OUTPUT);
+  pinMode(rst, OUTPUT);
+
+  digitalWrite(oe, LOW);
+  digitalWrite(rst, HIGH);
+
     init_Timer();
     init_TextPayload();
 
@@ -93,6 +112,7 @@ void setup(void)
 
     dht.begin();
     sensors.begin();
+    sensor2.begin();
 }
 
 // loop function
@@ -123,7 +143,7 @@ void serialEvent(void)
         {
         case READ_CMD:
             /* code */
-
+            //dataRandGenerator();
             // compose the data
 
             temp_env = String(temp_env_val, 1);
@@ -156,7 +176,7 @@ void serialEvent(void)
 }
 
 /* ********************************************************************
- * **** INTERRUPTIONS 
+ * **** INTERRUPTIONS
  * ********************************************************************/
 
 //With the settings above, this IRS will trigger each 100ms.
@@ -164,6 +184,10 @@ ISR(TIMER1_COMPA_vect)
 {
     contSample++;
     contLed++;
+    con++;
+    if (con >= 32){
+      con = 0;
+    }
 
     // activate sample
     if (contSample == SAMPLE_PERIOD) // 1 sec
@@ -178,5 +202,10 @@ ISR(TIMER1_COMPA_vect)
         contLed = 0;
         LED_STATE2 = !LED_STATE2;              //Invert LED state
         digitalWrite(LED_BUILTIN, LED_STATE2); //Write new state to the LED on pin D5
+        if (con < 16){
+        sr.set(con, HIGH); // set single pin HIGH
+        } else {
+          sr.set(con%16, LOW);
+        }
     }
 }

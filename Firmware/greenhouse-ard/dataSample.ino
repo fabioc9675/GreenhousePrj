@@ -7,16 +7,16 @@
  ************************************************************/
 
 /* ********************************************************************
- * **** INCLUDES 
+ * **** INCLUDES
  * ********************************************************************/
 #include "dataSample.h"
 
 /* ********************************************************************
- * **** DEFINES 
+ * **** DEFINES
  * ********************************************************************/
 
 /* ********************************************************************
- * **** EXTERN VARIABLES 
+ * **** EXTERN VARIABLES
  * ********************************************************************/
 // Variables to storage locally the information
 extern float temp_env_val;
@@ -32,15 +32,15 @@ extern float humi_e3_val;
 extern float humi_e4_val;
 
 /* ********************************************************************
- * **** LOCAL VARIABLES 
+ * **** LOCAL VARIABLES
  * ********************************************************************/
 
 /* ********************************************************************
- * **** PROTOTYPES 
+ * **** PROTOTYPES
  * ********************************************************************/
 
 /* ********************************************************************
- * **** FUNCTIONS 
+ * **** FUNCTIONS
  * ********************************************************************/
 float radiation(){
     static int current = 0;
@@ -76,11 +76,11 @@ void dataRandGenerator(void)
     mois_env_val = dht.readHumidity();           //Air humidity
     radi_env_val = radiation();
     temp_e1_val = sensors.getTempCByIndex(0);   //Soil temperature
-    temp_e2_val = random(2000, 3500) / 100.0;
+    temp_e2_val = (sensor2.getTempCByIndex(0)-32)*(5.0/9.0);
     temp_e3_val = random(2000, 3500) / 100.0;
     temp_e4_val = random(2000, 3500) / 100.0;
-    humi_e1_val = (1024.0-analogRead(sensorPin1))/1.0;        //Soil humidity
-    humi_e2_val = random(4000, 9000) / 100.0;
-    humi_e3_val = random(4000, 9000) / 100.0;
-    humi_e4_val = random(4000, 9000) / 100.0;
+    humi_e1_val = (1024.0-analogRead(sensorPin1))/10.0;        //Soil humidity
+    humi_e2_val = (1024.0-analogRead(sensorPin1))/10.0;        //Soil humidity
+    humi_e3_val = (1024.0-analogRead(sensorPin3))/10.0;        //Soil humidity
+    humi_e4_val = (1024.0-analogRead(sensorPin3))/10.0;        //Soil humidity
 }
